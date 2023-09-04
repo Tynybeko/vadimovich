@@ -1,0 +1,257 @@
+.header {
+    background: url(/assets/img/header--red--fon.png) bottom / cover;
+    width: 100%;
+    height: 100%;
+    padding: 20px 0;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: url(/assets/img/header--fon.png) center / cover;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
+
+    &--body {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        z-index: 2;
+
+        &--logo {
+            & img {
+                cursor: pointer;
+            }
+        }
+
+        &--burger {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-left: 35%;
+            position: relative;
+
+            &--navigat {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+
+                a {
+                    color: #F2F2F2;
+                    font-family: 'TroubleSide';
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    text-transform: uppercase;
+                    text-decoration: none;
+                    opacity: 0.4;
+                    transition: 0.3s;
+
+                    &.activ {
+                        opacity: 1;
+                    }
+
+                    &:hover {
+                        opacity: 1;
+                        transition: 0.3s;
+                    }
+                }
+            }
+
+            &--buttons {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 24px;
+
+                &--leng {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 8px;
+
+                    & span {
+                        color: #F2F2F2;
+                        font-family: 'IBM Plex Sans';
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 900;
+                        line-height: normal;
+                    }
+
+                    & .activ {
+                        opacity: 1;
+                    }
+
+                    & h1 {
+                        color: #F2F2F2;
+                        text-align: center;
+                        font-family: 'c Combe';
+                        font-size: 18px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                        opacity: 0.4;
+                        transition: 0.3s;
+                        cursor: pointer;
+                    }
+
+                    & h1:focus {
+                        opacity: 1;
+                        transition: 0.3s;
+                        cursor: pointer;
+
+                    }
+                }
+
+                & button {
+                    background: url(/assets/svg/button--font.svg) center;
+                    border: none;
+                    padding: 6px 26px 12px 26px;
+                    cursor: pointer;
+
+                    & a {
+                        color: #B52A2D;
+                        text-align: center;
+                        font-family: 'TroubleSide';
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: bold;
+                        line-height: normal;
+                        text-transform: uppercase;
+                        text-decoration: none;
+                    }
+                }
+            }
+
+        }
+
+        &--menu {
+            width: 25px;
+            height: 25px;
+            display: none;
+            position: relative;
+
+            & img {
+                width: 25px;
+                height: 25px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                cursor: pointer;
+            }
+
+            .open {
+                display: block;
+            }
+
+            .close {
+                display: none;
+            }
+        }
+    }
+}
+@media(max-width: 1690px) {
+    .container {
+        width: 1450px;
+    }
+
+    .header::before {
+        background-position: initial;
+    }
+}
+
+@media(max-width: 1470px) {
+    .container {
+        width: 1200px;
+    }
+
+    .header--body--burger {
+        margin-left: 25%;
+    }
+
+}
+
+@media(max-width: 1220px) {
+    .container {
+        width: 1024px;
+    }
+
+    .header--body--burger--navigat a {
+        font-size: 13px;
+    }
+
+    .header--body--burger--buttons--leng h1 {
+        font-size: 16px;
+    }
+
+    .header--body--burger--buttons button a {
+        font-size: 14px;
+    }
+
+    .header--body--burger--buttons button {
+        background-size: contain;
+    }
+
+    .header--body--logo img {
+        width: 60px;
+    }
+}
+
+@media(max-width: 1040px) {
+    .container {
+        width: 768px;
+    }
+
+    .header--body--burger {
+        margin-left: 15%;
+    }
+
+}
+
+@media(max-width: 780px) {
+    .container {
+        width: 420px;
+    }
+
+    .header--body--burger {
+        width: 25px;
+        margin-left: 0;
+    }
+
+    .header--body--burger--navigat {
+        display: none;
+    }
+
+    .header--body--burger--buttons {
+        display: none;
+    }
+
+    .header--body--menu {
+        display: block;
+    }
+}
+
+
+
+
+@media(max-width: 425px) {
+    .container {
+        width: 375px;
+    }
+
+}
+
+@media(max-width: 375px) {
+    .container {
+        width: 300px;
+    }
+}

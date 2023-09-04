@@ -1,0 +1,375 @@
+.footer {
+    background: url(/assets/svg/footer--fon.svg) top / cover;
+    width: 100%;
+    height: 100%;
+    padding-top: 80px;
+    padding-bottom: 24px;
+    padding: 80px 40px 24px 40px;
+    position: relative;
+    z-index: 2;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url(/assets/img/footer--fon.png) center / cover;
+        z-index: -1;
+    }
+
+    &--body {
+
+        &--top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+
+            &--logo {
+                position: relative;
+
+                & img {
+                    cursor: pointer;
+                }
+
+                &--meet {
+                    position: absolute;
+                    top: 31px;
+                    left: 80px;
+
+                    & img {
+                        width: 150px;
+                    }
+
+                    & h1 {
+                        position: absolute;
+                        top: 109px;
+                        left: 109px;
+                        color: #F2F2F2;
+                        text-align: center;
+                        font-family: 'TroubleSide';
+                        font-size: 24px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                        text-transform: uppercase;
+                        transform: rotate(-10.635deg);
+                        max-width: 136px;
+                    }
+                }
+            }
+
+            &--navigate {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+
+                & a {
+                    color: #FFF;
+                    font-family: 'TroubleSide';
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    text-transform: uppercase;
+                    text-decoration: none;
+                    width: max-content;
+
+                    &:hover {
+                        color: #000;
+                    }
+
+                    &.activ {
+                        color: #000;
+                    }
+                }
+            }
+
+            &--net {
+                position: relative;
+
+                &--icons {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 4;
+
+                    & img {
+                        cursor: pointer;
+                    }
+                }
+
+                &--know {
+                    position: absolute;
+                    top: 40px;
+                    left: -88px;
+
+                    & img {
+                        width: 150px !important;
+                    }
+
+                    & h1 {
+                        position: absolute;
+                        top: 53px;
+                        left: -151px;
+                        max-width: 164px;
+                        color: #F2F2F2;
+                        font-family: 'TroubleSide';
+                        font-size: 36px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                        text-transform: uppercase;
+                        text-align: center;
+                        transform: rotate(-10.635deg);
+
+                        & span {
+                            color: #F2F2F2;
+                            text-align: center;
+                            font-family: 'TroubleSide';
+                            font-size: 24px;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: normal;
+                            text-transform: uppercase;
+                            display: block;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+
+        &--end {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 218px;
+
+            & p {
+                color: #FFF;
+                font-family: 'TroubleSide';
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                text-transform: uppercase;
+            }
+
+            & h1 {
+                color: #FFF;
+                font-family: 'TroubleSide';
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+
+@media(max-width: 1690px) {
+    .container {
+        width: 1450px;
+    }
+   
+}
+
+@media(max-width: 1470px) {
+    .container {
+        width: 1200px;
+    }
+
+    .footer::before {
+        background: url(/assets/img/footer--fon.png);
+        background-position: initial;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}
+
+@media(max-width: 1220px) {
+    .container {
+        width: 1024px;
+    }
+
+    .footer--body--top--navigate a {
+        font-size: 16px;
+    }
+
+    .footer--body--top--net img {
+        width: 31px;
+    }
+}
+
+@media(max-width: 1040px) {
+    .container {
+        width: 768px;
+    }
+
+    .footer--body--top--navigate a {
+        font-size: 13px;
+    }
+
+    .footer--body--top--logo--meet h1 {
+        font-size: 15px;
+        top: 82px;
+        left: 89px;
+    }
+
+    .footer--body--top--logo--meet img {
+        width: 110px;
+    }
+
+    .footer--body--top--net--know img {
+        width: 116px !important;
+    }
+
+    .footer--body--top--net--know {
+        left: -48px;
+    }
+
+    .footer--body--top--net--know h1 {
+        font-size: 20px;
+        max-width: 136px;
+        top: 52px;
+        left: -122px;
+    }
+
+    .footer--body--top--net--know h1 span {
+        font-size: 15px;
+    }
+
+}
+
+@media(max-width: 780px) {
+    .container {
+        width: 420px;
+    }
+
+    .footer--body--top--navigate {
+        gap: 11px;
+    }
+
+    .footer--body--top--net img {
+        width: 24px;
+    }
+
+    .footer--body--end {
+        margin-top: 172px;
+    }
+
+    .footer--body--end p {
+        font-size: 8px;
+    }
+
+    .footer--body--end h1 {
+        font-size: 12px;
+    }
+
+    .footer--body--top--logo--meet img {
+        width: 93px;
+    }
+
+    .footer--body--top--logo--meet {
+        top: 56px;
+        left: 75px;
+    }
+
+    .footer--body--top--net--know img {
+        width: 90px !important;
+    }
+
+    .footer--body--top--net--know {
+        left: -19px;
+    }
+
+    .footer--body--top--logo--meet h1 {
+        font-size: 13px;
+        top: 69px;
+        left: 66px;
+    }
+
+    .footer--body--top--net--know h1 span {
+        font-size: 11px;
+    }
+
+    .footer--body--top--net--know h1 {
+        font-size: 15px;
+        max-width: 78px;
+        top: 55px;
+        left: -73px;
+    }
+}
+
+
+@media(max-width: 425px) {
+    .container {
+        width: 375px;
+    }
+
+    .footer--body--top--logo--meet img {
+        width: 72px;
+    }
+
+    .footer--body--top--logo--meet h1 {
+        font-size: 11px;
+        top: 54px;
+        left: 26px;
+    }
+
+    .footer--body--top--net--know img {
+        width: 70px !important;
+    }
+
+    .footer--body--top--net--know h1 span {
+        font-size: 9px;
+    }
+
+    .footer--body--top--net--know h1 {
+        font-size: 12px;
+        top: 55px;
+        left: -56px;
+    }
+}
+
+@media(max-width: 375px) {
+    .container {
+        width: 300px;
+    }
+
+    .footer::before {
+        background-size: cover;
+    }
+
+    .footer--body--end p {
+        text-align: center;
+    }
+
+    .footer--body--end h1 {
+        text-align: center;
+    }
+
+    .footer--body--end {
+        gap: 20px;
+    }
+
+    .footer--body--top--logo--meet {
+        top: 63px;
+        left: 61px;
+    }
+
+    .footer--body--top--net--know {
+        left: -7px;
+        top: 29px;
+    }
+
+    .footer--body--top--net--know h1 {
+        top: 60px;
+        left: -43px;
+    }
+}

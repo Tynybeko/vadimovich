@@ -1,0 +1,56 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: none;
+  user-select: none;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+
+
+html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+
+
+@font-face {
+  font-family: 'TroubleSide';
+  src: url('../../public/font/Troubleside.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'c Combe';
+  src: url('../../public/font/Combe.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'FontName';
+  src: url('../../public/font/IBMPlexSans/IBMPlexSans-SemiBold.ttf') format('truetype');
+}
+
+.font {
+  background-image: url('../../public/assets/img/backgroun--img--fon.png');
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  max-width: 1680px;
+  margin: auto;
+}
+
+
+body {
+  background: url('../../public/assets/img/backgroun--full-=img.png') no-repeat center/cover;
+  width: 100%;
+  height: 100%;
+}

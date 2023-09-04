@@ -1,0 +1,394 @@
+.data {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.575);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+
+    display: none;
+
+    &--regist {
+        position: relative;
+        width: 1114px;
+        background: url(/assets/img/data--fon.png);
+        padding: 40px;
+        padding-top: 20px;
+        background-position: inherit;
+        background-size: cover;
+
+        &--close {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            background: url(/assets/svg/white--button--fon.svg) center / cover;
+            border: none;
+            color: #B52A2D;
+            text-align: center;
+            font-family: 'c Combe';
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            width: 36px;
+            height: 33px;
+            cursor: pointer;
+        }
+
+        &--title {
+            display: none;
+
+            &.activ {
+                display: block;
+            }
+
+            &:last-child {
+                margin: 20px;
+
+                & h2 {
+                    color: #F2F2F2;
+                    text-align: center;
+                    font-family: 'TroubleSide';
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    text-transform: uppercase;
+                    opacity: 0.6;
+                }
+            }
+
+            &--text {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 40px;
+
+                & h1 {
+                    color: #F2F2F2;
+                    font-family: 'TroubleSide';
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    text-transform: lowercase;
+                    opacity: 0.4;
+                    transition: 0.3s;
+                    cursor: pointer;
+                    margin: 20px 0;
+                }
+
+                & h1:hover {
+                    transition: 0.3s;
+                    opacity: 1;
+                }
+
+                & .activ {
+                    opacity: 1;
+                }
+            }
+
+            &>h1 {
+                color: #F2F2F2;
+                text-align: center;
+                font-family: 'TroubleSide';
+                font-size: 36px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                text-transform: uppercase;
+                margin-bottom: 32px;
+            }
+
+            &--inputs {
+
+                & .form-inner {
+                    width: 80%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                    column-gap: 20px;
+                    row-gap: 40px;
+                    margin: auto;
+
+                    & input {
+                        background: url(/assets/svg/input--fon.svg) center / cover;
+                        border: none;
+                        padding: 16px 50px;
+                        font-family: 'TroubleSide';
+                        cursor: pointer;
+                    }
+
+                    & button {
+                        position: relative;
+                        background: url(/assets/svg/input--fon.svg) center / cover;
+                        border: none;
+                        width: 400px;
+                        height: 80px;
+                        font-family: 'TroubleSide';
+                        cursor: pointer;
+                        color: #231F20;
+                        text-align: center;
+                        font-family: 'TroubleSide';
+                        font-size: 17px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                        padding: 0 60px;
+
+                        & img {
+                            position: absolute;
+                            top: 50%;
+                            left: 20px;
+                            transform: translateY(-50%);
+                        }
+                    }
+
+                    & input::placeholder {
+                        color: #231F20;
+                        text-align: center;
+                        font-family: 'TroubleSide';
+                        font-size: 20px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                    }
+                }
+
+                &>button {
+                    color: #F2F2F2;
+                    font-family: 'TroubleSide';
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    border: none;
+                    background: url(/assets/svg/black--btn--fon.svg) center / cover;
+                    padding: 14px 50px;
+                    margin: auto;
+                    margin-top: 40px;
+                    display: flex;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+input {
+    text-align: center;
+}
+
+.block {
+    display: flex !important;
+}
+
+
+@media(max-width: 1690px) {
+    .container {
+        width: 1450px;
+    }
+
+
+}
+
+@media(max-width: 1470px) {
+    .container {
+        width: 1200px;
+    }
+
+}
+
+@media(max-width: 1220px) {
+    .container {
+        width: 1024px;
+    }
+
+    .data--regist--title--text h1 {
+        font-size: 15px;
+    }
+
+    .data--regist--close {
+        font-size: 14px;
+        width: 30px;
+        height: 26px;
+    }
+
+    .data--regist--title>h1 {
+        font-size: 28px;
+    }
+
+    .data--regist--title--inputs .form-inner input {
+        padding: 13px 30px;
+    }
+
+    .data--regist--title--inputs>button {
+        font-size: 15px;
+        padding: 12px 41px;
+    }
+
+    .data--regist {
+        width: 883px;
+    }
+
+    .data--regist--title--inputs .form-inner button {
+        width: 331px;
+        height: 59px;
+        font-size: 13px;
+        padding: 0 38px;
+    }
+
+    .data--regist--title--inputs .form-inner button img {
+        width: 22px;
+    }
+
+    .data--regist--title--inputs .form-inner {
+        width: 94%;
+    }
+
+    .data--regist--title--inputs .form-inner button {
+        width: 290px;
+        height: 59px;
+        font-size: 12px;
+        padding: 0 38px;
+    }
+
+    .data--regist--title--inputs .form-inner {
+        width: 95% !important;
+    }
+}
+
+@media(max-width: 1040px) {
+    .container {
+        width: 768px;
+    }
+
+
+    .data--regist {
+        width: 743px;
+    }
+
+    .data--regist--title--inputs .form-inner {
+        width: 84%;
+    }
+}
+
+@media(max-width: 780px) {
+    .container {
+        width: 420px;
+    }
+
+    .data--regist--title>h1 {
+        font-size: 20px;
+    }
+
+    .data--regist--title--text h1 {
+        font-size: 12px;
+    }
+
+    .data--regist--close {
+        font-size: 12px;
+        width: 23px;
+        height: 22px;
+    }
+
+    .data--regist--title--inputs .form-inner input {
+        padding: 11px 0px;
+        width: 164px;
+    }
+
+    .data--regist--title--inputs .form-inner input::placeholder {
+        font-size: 15px;
+    }
+
+    .data--regist {
+        width: 496px;
+    }
+
+    .data--regist--title--inputs .form-inner button img {
+        width: 11px;
+    }
+
+    .data--regist--title--inputs .form-inner button {
+        width: 168px;
+        height: 50px;
+        font-size: 7px;
+        padding: 0 29px;
+    }
+
+    .data--regist--title--inputs .form-inner button {
+        width: 90%;
+        height: 32px;
+        font-size: 7px;
+        padding: 0 29px;
+    }
+
+    .data--regist--title--inputs>button {
+        font-size: 7px;
+        padding: 10px 35px;
+    }
+}
+
+@media(max-width: 550px) {
+
+    .data--regist--title>h1 {
+        font-size: 15px;
+    }
+
+    .data--regist--title--inputs .form-inner {
+        flex-direction: column;
+    }
+
+    .data--regist--title--inputs .form-inner {
+        row-gap: 10px;
+    }
+
+    .data--regist--title--inputs>button {
+        margin-top: 20px;
+    }
+
+    .data--regist--title--text {
+        gap: 0;
+        flex-direction: column;
+        margin-bottom: 17px;
+    }
+
+    .data--regist--title--text h1 {
+        margin: 7px 0;
+    }
+
+    .data--regist {
+        width: 312px;
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+@media(max-width: 425px) {
+    .container {
+        width: 375px;
+    }
+
+}
+
+@media(max-width: 375px) {
+    .container {
+        width: 300px;
+    }
+
+    .data--regist {
+        width: 296px;
+    }
+
+    .data--regist--title>h1 {
+        font-size: 12px;
+    }
+
+    .data--regist--title:last-child h2 {
+        font-size: 10px;
+    }
+}

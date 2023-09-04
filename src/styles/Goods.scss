@@ -1,0 +1,115 @@
+.gallery {
+    margin-top: 50px;
+    margin-bottom: 62px;
+
+    &--point {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        & h1 {
+            color: var(--gray-6, #F2F2F2);
+            font-family: 'TroubleSide';
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        &--buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+
+            & button {
+                border: none;
+                padding: 14px 31px 18px 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 4px;
+                color: #F2F2F2;
+                font-family: 'TroubleSide';
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                background: url(../../public/assets/svg/button--black--fon.svg);
+                cursor: pointer;
+            }
+        }
+    }
+
+    &--cards {
+        margin-top: 24px;
+        margin-bottom: 41px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 21px;
+
+        &--fon {
+            background: url(../../public/assets/img/man.png) center / cover;
+            width: 546px;
+            height: 658px;
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url(../../public/assets/img/man--fon.png) center;
+            }
+        }
+    }
+
+    &--buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+
+        & img {
+            cursor: pointer;
+
+            &:first-child {
+                transform: rotate(180deg);
+                opacity: 0.2;
+            }
+        }
+
+        &--btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+
+            & button {
+                background: url(../../public/assets/svg/btn--fon.svg) center / cover;
+                border: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #F2F2F2;
+                text-align: center;
+                font-family: 'c Combe';
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                width: 36px;
+                height: 33px;
+                opacity: 0.4;
+                cursor: pointer;
+
+                &:nth-child(2) {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
