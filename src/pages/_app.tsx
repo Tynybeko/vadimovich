@@ -3,22 +3,20 @@ import '@/app/style.scss'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import { useState, useEffect } from 'react'
-import { CartContext } from '@/hooks/CartContect'
+import { ItemsContext } from '@/hooks/CartContect'
 import { Item } from '@/utils/IGoods'
-
-type CartContextType = [Item[], React.Dispatch<React.SetStateAction<Item[]>>];
-
+import type { ItemsContextType } from '@/hooks/CartContect'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
     const [items, setItems] = useState<Item[]>([])
 
     return (
-        <CartContext.Provider value={[items, setItems] as CartContextType}>
+        <ItemsContext.Provider value={[items, setItems] as ItemsContextType}>
             <section className='font'>
                 <Header />
                 <Component {...pageProps} />
                 <Footer />
             </section>
-        </CartContext.Provider>
+        </ItemsContext.Provider>
     )
 }

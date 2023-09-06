@@ -10,7 +10,7 @@ export default function pagination({ pageCount }: any) {
         const url = `/?page=${i}${queryString ? `&${queryString}` : ''}`
         const renderItem = (
             <Link href={url}>
-                <button className={`${page ?? page == i ? 'active' : ''}`} key={i}>
+                <button className={`${(page ?? page == i) ? 'active' : page ? '' : 'active'}`} key={i}>
                     {i}
                 </button>
             </Link>

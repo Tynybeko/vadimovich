@@ -18,6 +18,7 @@ interface BuyModalProps {
 
 
 
+
 const BuyModal: React.FC<BuyModalProps> = ({ isOpen, setClose }) => {
     const [step, setStep] = useState<number>(1)
     const { locale } = useRouter()
@@ -82,8 +83,6 @@ const BuyModal: React.FC<BuyModalProps> = ({ isOpen, setClose }) => {
             setStep(prev => prev + 1)
         }
     }
-
-
 
     return (
         <div className={`data ${isOpen ? 'block' : ''}`}>

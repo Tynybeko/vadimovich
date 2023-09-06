@@ -2,15 +2,15 @@
 import { createContext, useContext } from "react";
 import { Item } from "@/utils/IGoods";
 
-type CartContextType = [Item[], React.Dispatch<React.SetStateAction<Item[]>>];
+export type ItemsContextType = [Item[], React.Dispatch<React.SetStateAction<Item[]>>];
 
 
 
 
 
-export const CartContext = createContext<any>([])
+export const ItemsContext = createContext<any>([])
 
-export const useCartContext = () => {
-    const context = useContext(CartContext)
+export const useItemsContext = () => {
+    const context = useContext(ItemsContext)
     return context
 }   
