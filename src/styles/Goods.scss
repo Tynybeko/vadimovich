@@ -73,12 +73,16 @@
         justify-content: center;
         gap: 12px;
 
-        & img {
+        & svg {
             cursor: pointer;
+            opacity: 0.2;
 
             &:first-child {
                 transform: rotate(180deg);
-                opacity: 0.2;
+            }
+
+            &:hover {
+                opacity: 1;
             }
         }
 
@@ -106,9 +110,11 @@
                 opacity: 0.4;
                 cursor: pointer;
 
-                &:nth-child(2) {
-                    opacity: 1;
-                }
+            }
+
+            .active {
+                opacity: 1;
+
             }
         }
     }
