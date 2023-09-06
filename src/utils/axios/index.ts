@@ -1,9 +1,9 @@
 import axios from 'axios'
-
+import 'dotenv'
 
 
 const api = axios.create({
-    baseURL: 'https://vadimovich-back.prolabagency.com/api/v1',
+    baseURL: process.env.API,
     headers: {
         "Content-Type": "application/json"
     }
