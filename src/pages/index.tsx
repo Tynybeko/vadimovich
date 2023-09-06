@@ -3,7 +3,6 @@
 import React from 'react'
 import Banner from '@/components/banner'
 import Goods from '@/components/goods'
-import { useEffect } from 'react'
 
 
 export default function index() {

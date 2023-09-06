@@ -77,14 +77,10 @@
                     text-transform: lowercase;
                     opacity: 0.4;
                     transition: 0.3s;
-                    cursor: pointer;
                     margin: 20px 0;
                 }
 
-                & h1:hover {
-                    transition: 0.3s;
-                    opacity: 1;
-                }
+             
 
                 & .activ {
                     opacity: 1;
@@ -115,38 +111,60 @@
                     row-gap: 40px;
                     margin: auto;
 
-                    & input {
-                        background: url(/assets/svg/input--fon.svg) center / cover;
-                        border: none;
-                        padding: 16px 50px;
-                        font-family: 'TroubleSide';
-                        cursor: pointer;
+                    .text-red-600 {
+                        color: rgba(35, 31, 32, 0.60);
+                        font-family: TroubleSide;
+                        font-size: 15px;
+                        margin-top: 5px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
                     }
 
-                    & button {
-                        position: relative;
+                    .radio-input {
                         background: url(/assets/svg/input--fon.svg) center / cover;
-                        border: none;
-                        width: 400px;
-                        height: 80px;
-                        font-family: 'TroubleSide';
                         cursor: pointer;
                         color: #231F20;
                         text-align: center;
                         font-family: 'TroubleSide';
-                        font-size: 17px;
+                        font-size: 20px;
                         font-style: normal;
                         font-weight: 400;
+                        display: flex;
+                        align-items: center;
                         line-height: normal;
-                        padding: 0 60px;
+                        justify-content: space-between;
+                        width: 400px;
+                        padding: 18px;
+                        float: left;
 
-                        & img {
-                            position: absolute;
-                            top: 50%;
-                            left: 20px;
-                            transform: translateY(-50%);
+                        p {
+                            width: 100%;
+                            text-align: center;
+                        }
+
+                        height: 80px;
+
+                        img {
+                            width: 40px;
+                        }
+
+                        input {
+                            display: none;
                         }
                     }
+
+                    & input {
+                        background: url(/assets/svg/input--fon.svg) center / cover;
+                        border: none;
+                        width: 400px;
+                        height: 80px;
+                        padding: 16px 50px;
+                        font-family: 'TroubleSide';
+                        cursor: pointer;
+                        font-size: 20px;
+                    }
+
 
                     & input::placeholder {
                         color: #231F20;

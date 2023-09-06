@@ -14,7 +14,6 @@ const Cupon: React.FC<BuyModalProps> = ({ setClose }) => {
     const debounceSearch = useDebounce(cuponSearch, 500)
 
     function cuponSearch(cupon: string) {
-        console.log(cupon)
 
     }
 

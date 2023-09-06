@@ -1,14 +1,23 @@
 'use client'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '@/styles/Goods.scss'
 import lang from '@/utils/language'
 import { useRouter } from 'next/router'
+import 'dotenv'
+
+
+
 
 export default function goods() {
+    const apiKey = process.env.BASE_API;
+    console.log(apiKey)
     const { locale } = useRouter()
     const t = locale == 'ru' ? lang.ru : lang.kg
+    const [items, setItems] = useState([])
 
+    useEffect(() => {
 
+    }, [])
 
     return (
         <div className="gallery">

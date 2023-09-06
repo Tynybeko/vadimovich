@@ -11,5 +11,9 @@ module.exports = {
     i18n: {
         locales: ['ru', 'kg'],
         defaultLocale: 'ru',
+    },
+    env: {
+        BASE_API: process.env.API
     }
+
 }
