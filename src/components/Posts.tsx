@@ -75,6 +75,9 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
 
                             }}
                             breakpoints={{
+                                0: {
+                                    slidesPerView: 0,
+                                },
                                 375: {
                                     slidesPerView: 1,
                                 },
