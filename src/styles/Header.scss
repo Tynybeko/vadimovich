@@ -264,10 +264,28 @@
         width: 375px;
     }
 
+    .header--body--burger {
+        width: 50%;
+        gap: 10px;
+        padding-right: 20px;
+    }
+
+
 }
 
 @media(max-width: 375px) {
     .container {
         width: 300px;
     }
+
+    .header--body--burger {
+        width: 50%;
+        gap: 10px;
+        padding-right: 20px;
+    }
+
+    .header {
+        width: 100%;
+    }
+
 }

@@ -68,7 +68,7 @@ export default function Header() {
                             <button><Link href="/cart">{t.nav.cart}</Link></button>
                         </div>
                         <div className="header--body--menu">
-                            <BurgerMenu isBurger={isBurger} />
+                            <BurgerMenu navs={categories} isBurger={isBurger} />
                             {
                                 !isBurger ? <img onClick={() => {
                                     setBurgerState(true)
@@ -86,3 +86,5 @@ export default function Header() {
         </header>
     )
 }
+
+

@@ -5,11 +5,11 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import lang from '@/utils/language'
 import '../styles/MyBurger.scss'
+import type { nav } from './header'
 
 
 
-
-export default function BurgerMenu({ isBurger }: { isBurger: boolean }) {
+export default function BurgerMenu({ isBurger, navs }: { isBurger: boolean, navs: nav[] }) {
     const { pathname, asPath, locale } = useRouter()
     const t = locale == 'ru' ? lang.ru : lang.kg
     const navlinks = [
@@ -19,14 +19,14 @@ export default function BurgerMenu({ isBurger }: { isBurger: boolean }) {
         { title: t.nav.shoes, href: '/shoes', desc: 'shoes' },
     ]
 
-    
+
 
 
     return (
         <div className={`myBurger ${isBurger ? 'myBurger-active' : ''}`}>
             <nav>
                 {
-                    navlinks.map(({ title, href, desc }, index) => (
+                    navs.map(({ title, href }, index) => (
                         <Link key={index} className={(pathname == href) ? 'activ' : ''} href={href}>{title}</Link>
                     ))
                 }

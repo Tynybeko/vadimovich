@@ -62,13 +62,7 @@ export default function singlePage() {
                                         <div>
                                             {createMarkup(locale == 'ru' ? item?.content : item?.content_ky)}
                                         </div>
-                                        <div className="title--front--paragraphs--designe--chart">
-                                            <p>Таблица размеров</p>
-                                            <p>Оплата заказа</p>
-                                            <p>Условия доставки</p>
-                                            <p>Правила возврата</p>
-                                            <p>Помощь клиентам</p>
-                                        </div>
+                                      
                                     </div>
                                     <div className="title--front--paragraphs--flex">
                                         <p>{t.goods.size}</p>

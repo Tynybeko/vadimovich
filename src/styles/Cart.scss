@@ -106,14 +106,32 @@
                 }
 
                 &--center {
+                    overflow: auto;
+                    max-height: 150px;
+                    width: 100%;
+                    scrollbar-width: thin;
+                    scrollbar-color: white grey;
+
+
+
+                    &::-webkit-scrollbar {
+                        width: 10px !important;
+                        display: block;
+                        background-color: grey;
+                        &-thumb {
+                            background-color: white;
+                        }
+
+                    }
+
                     & p {
+                        width: 100%;
                         color: #F2F2F2;
                         font-family: 'TroubleSide';
                         font-size: 14px;
                         font-style: normal;
                         font-weight: 400;
                         line-height: 150%;
-                        max-width: 286px;
                     }
                 }
 
@@ -691,7 +709,6 @@
 
     .main .buy--title--text--center p {
         font-size: 12px;
-        max-width: 247px;
     }
 
     .main .buy--title--text--count--block>h1 {
@@ -1470,6 +1487,12 @@
 }
 
 @media(max-width: 425px) {
+    .main .buy--title {
+        padding: 0 20px;
+        grid-template-columns: 1fr;
+        grid-template-areas: 'img' 'text';
+    }
+
     .container {
         width: 375px;
     }
