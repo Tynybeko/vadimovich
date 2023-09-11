@@ -1,7 +1,7 @@
 .title {
     padding: 135px 0;
     position: relative;
-    
+
 
     &--follow {
         display: flex;
@@ -474,6 +474,10 @@
         font-size: 13px;
     }
 
+    .main .gallery--point--buttons .categories {
+        font-size: 13px;
+    }
+
     .main .gallery--cards--fon {
         width: 242px;
         height: 292px;
@@ -490,6 +494,9 @@
 @media(max-width: 780px) {
     .container {
         width: 420px;
+    }
+    .main .gallery--point--buttons .categories {
+        top: 20px;
     }
 
     .main .title--pos.pos2 {
@@ -560,7 +567,7 @@
     }
 
     .main .title--pos.pos2 h1 {
-        bottom: -41px;
+        top: 50px;
         right: 48px;
     }
 
@@ -604,7 +611,7 @@
     }
 
     .main .title--pos.pos3 {
-        right: 70px;
+        right: 0;
         top: 112px;
     }
 
@@ -725,6 +732,10 @@
         right: 95px;
         top: 320px;
     }
+    .main .gallery--point--buttons button {
+        font-size: 7px;
+    }
+
 
 }
 

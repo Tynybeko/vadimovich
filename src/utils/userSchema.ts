@@ -8,8 +8,9 @@ export const userSchema = z.object({
         if (cleanedValue.startsWith("996") && cleanedValue.length === 12) {
             return true;
         }
+        return false
     }, 'format'),
-    whatsapp_num: z.string().refine((value) => {
+    whatsapp_num: z.string().refine(value => {
         const cleanedValue = value.replace(/\D/g, "");
         if (cleanedValue.startsWith("996") && cleanedValue.length === 12) {
             return true;
@@ -20,7 +21,6 @@ export const userSchema = z.object({
         if (!value) {
             return false
         }
-
         const regex = /^[^0-9\/W\g]*$/;
         return regex.test(`${value}`)
     }, 'format'),
@@ -39,8 +39,8 @@ export const userSchema = z.object({
         return regex.test(`${value}`)
     }, 'format'),
     shipping_address: z.string().refine(value => value, 'format'),
-    delOption: z.enum(['opt1', 'opt2', 'opt3']),
-    payOption: z.enum(['opt1', 'opt2', 'opt3', 'opt4']),
+    delivery: z.enum(['Самовызов', 'Фиксированая стоимость доставки по странам СНГ', 'Фиксированая стоимость доставки']),
+    payment: z.enum(['Mbank', 'Перевод на карту', 'Наличными при получении', 'Картой банка при получении']),
 });
 
 export type User = z.infer<typeof userSchema>;

@@ -4,11 +4,9 @@ import '@/styles/Goods.scss'
 import lang from '@/utils/language'
 import { useRouter } from 'next/router'
 import { ITEM_API } from '@/utils/axios'
-import { Item } from '@/utils/IGoods'
 import Link from 'next/link'
-import { useItemsContext } from '@/hooks/CartContect'
 import Pagination from './pagination'
-
+import Posts from './Posts'
 
 export const getItems = async (page: any) => {
     const { data } = await ITEM_API.get(`/item/for/users/?${page}`)
@@ -19,32 +17,47 @@ export const getCategories = async () => {
     return await data
 }
 
+export const selectCategory = (items: { id: string; title: string }[], id: any) => {
+    let cat = items.find((item: any) => item?.id == id)
+    if (cat) {
+        return cat?.title
+    }
+    return ''
+}
 
 
-export default function goods() {
-    const { locale, query } = useRouter()
+
+export default function Goods() {
+    const { locale, query, push } = useRouter()
     const t = locale == 'ru' ? lang.ru : lang.kg
-    const [page, setPage] = useState<string>('1')
-    const [{ isNext, isPrev }, setPagState] = useState({ isNext: false, isPrev: false })
+    const [pageRout, setPage] = useState<any>('1')
     const [categories, setCategories] = useState<any[]>([])
-    const [items, setItems] = useItemsContext()
-    const [{ isCheckCat, selectedCat }, setCat] = useState({ isCheckCat: false, selectedCat: '' })
-
+    const [{ isCheckCat, selectedCat }, setCat] = useState({ isCheckCat: false, selectedCat: selectCategory(categories ?? [], query?.category ?? '') ?? '' })
+    const { category, page, ...someQuery } = query
+    const [pageCount, setPageCount] = useState<number>(1)
+    const count = Math.ceil(pageCount / 6)
+    const [sort, setSort] = useState<string>('')
 
     useEffect(() => {
-        const queryString = new URLSearchParams(query as Record<string, string>).toString()
         if (query) {
-            getItems(queryString).then(res => {
-                setItems([...(res?.results ?? [])])
-                setPage(res.count)
-                setPagState(prev => ({ isNext: res.next, isPrev: res.previous }))
-            })
             getCategories().then(res => {
                 setCategories(prev => [...(res?.results ?? [])])
-            })
-        }
-    }, [query, page])
 
+                if (category) {
+                    setCat(prev => ({ isCheckCat: false, selectedCat: selectCategory(res?.results, category) }))
+                    setPageCount(res?.results.find((item: any) => item.id == category).items.length)
+                }
+                if (query.page) {
+                    setPage(query.page as string)
+                }
+            })
+            setSort((query?.ordering ?? '') as string)
+            console.log(query.ordering);
+        }
+
+    }, [query])
+
+    const search = new URLSearchParams()
 
     return (
         <div className="gallery">
@@ -57,37 +70,63 @@ export default function goods() {
                         <div className={`categories  ${isCheckCat ? 'active' : ''}`}>
                             {
                                 categories.map(item => item?.title != selectedCat ? (
-                                    <button onClick={() => {
-                                        setCat(prev => ({ ...prev, selectedCat: item?.title }))
-                                    }}>{item?.title}</button>
+                                    <Link href={`/?${new URLSearchParams(someQuery as Record<string, string>).toString() || `page=1`}&category_id=${item?.id}`}>
+                                        <button onClick={() => {
+                                            setCat(prev => ({ ...prev, selectedCat: locale == 'ru' ? item?.title : item?.title_ky }))
+                                        }}>{locale == 'ru' ? item?.title : item?.title_ky}</button>
+                                    </Link>
+
                                 ) : '')
 
                             }
                             {
-                                selectedCat ? <button onClick={() => {
-                                    setCat(prev => ({ ...prev, selectedCat: '' }))
-                                }}>{t.goods.category}</button> : ''
+                                selectedCat ?
+                                    <Link href={`/?${new URLSearchParams(someQuery as Record<string, string>).toString()}`}>
+                                        <button onClick={() => {
+                                            setCat(prev => ({ ...prev, selectedCat: '' }))
+                                        }}>{t.goods.category}</button>
+                                    </Link>
+                                    : ''
                             }
                         </div></button>
 
 
-                    <button>
-                        <img src="/assets/svg/price--arrow.svg" alt="arrow" />
+                    <button onClick={() => {
+                        const { ordering, ...someQuery } = query
+                        const queryString = new URLSearchParams(someQuery as Record<string, string>).toString()
+                        console.log(ordering);
+
+                        let url;
+                        if (!sort) {
+                            url = `/?ordering=${"discount"}${queryString ? `&${queryString}` : ''}`
+                            setSort('discount')
+                            push(url)
+                        } else if (sort == 'discount') {
+                            url = `/?ordering=${"-discount"}${queryString ? `&${queryString}` : ''}`
+                            setSort('-discount')
+                            push(url)
+                        } else if (sort == '-discount') {
+                            url = `/?ordering=${"discount"}${queryString ? `&${queryString}` : ''}`
+                            setSort('discount')
+                            push(url)
+                        }
+
+                    }} >
+                        <img className={`${sort == '-discount' ? 'button_ordering-active' : ''}`} src="/assets/svg/price--arrow.svg" alt="arrow" />
                         {t.goods.price}
                     </button>
                 </div>
             </div >
-            <div className="gallery--cards">
-                {
-                    items.map((item: Item) => (
-                        <Link className="gallery--cards--fon" style={{ backgroundImage: `url(${item.photo})` }} href={`catalog/${item.id}`}></Link>
-                    ))
-                }
-            </div>
+            <Posts setPage={setPageCount} isSingle={false} />
             <div className="gallery--buttons">
                 <svg onClick={() => {
-                    if (isPrev) {
-                        setPage(prev => String(+prev + 1))
+                    const queryString = new URLSearchParams(someQuery as Record<string, string>).toString()
+                    const url = `/?page=${page}${queryString ? `&${queryString}` : ''}`
+                    if (+pageRout - 1 > 0) {
+                        setPage((+pageRout - 1))
+                        const queryString = new URLSearchParams(someQuery as Record<string, string>).toString()
+                        const url = `/?page=${+pageRout - 1}${queryString ? `&${queryString}` : ''}`
+                        push(url)
                     }
                 }} xmlns="http://www.w3.org/2000/svg" width="12" height="14" viewBox="0 0 12 14" fill="none">
                     <g clip-path="url(#clip0_12_408)">
@@ -97,11 +136,14 @@ export default function goods() {
                     </g>
                 </svg>
                 <div className="gallery--buttons--btn">
-                    <Pagination pageCount={page} />
+                    <Pagination pageCount={pageCount} />
                 </div>
                 <svg onClick={() => {
-                    if (isNext) {
-                        setPage(prev => String(+prev - 1))
+                    if (+pageRout + 1 <= count) {
+                        setPage(+pageRout + 1)
+                        const queryString = new URLSearchParams(someQuery as Record<string, string>).toString()
+                        const url = `/?page=${+pageRout + 1}${queryString ? `&${queryString}` : ''}`
+                        push(url)
                     }
                 }} xmlns="http://www.w3.org/2000/svg" width="12" height="14" viewBox="0 0 12 14" fill="none">
                     <g clip-path="url(#clip0_12_408)">

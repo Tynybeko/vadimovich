@@ -1,8 +1,11 @@
 .main {
+    position: relative;
 
     .buy {
         margin-top: 50px;
         margin-bottom: 100px;
+        position: relative;
+        height: 100%;
 
         &--where {
             margin-bottom: 20px;
@@ -26,32 +29,41 @@
         }
 
         &--title {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
+            display: grid;
             gap: 80px;
             margin-bottom: 26px;
+            grid-template-columns: 1fr 3fr;
+            grid-template-areas: 'img text';
 
             &--img {
+                grid-area: img;
+
                 & a {
+                    margin-right: 20px;
                     width: 264px !important;
-                    height: 210px !important;
+                    height: 264px !important;
                     background: url(/assets/img/full--man--img.png);
-                    background-size: contain !important;
+                    background-size: cover !important;
                     background-repeat: no-repeat !important;
-                    background-position: initial !important;
+                    background-position: center !important;
 
                     &::before {
-                        background-position: initial !important;
-                        background-size: contain !important;
+                        background-position: center !important;
+                        background-size: cover !important;
                     }
                 }
             }
 
             &--text {
+                grid-area: text;
                 width: 100%;
+                display: flex;
+                justify-content: start;
+                flex-direction: column;
+                align-items: flex-start;
 
                 &--top {
+                    width: 100%;
                     display: flex;
                     justify-content: space-between;
 
@@ -88,6 +100,7 @@
                             font-weight: 400;
                             line-height: normal;
                             text-decoration: line-through;
+                            margin-top: -5px;
                         }
                     }
                 }
@@ -503,13 +516,7 @@
         }
 
         &--cards {
-            margin-top: 24px;
-            margin-bottom: 41px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 21px;
-            width: fit-content;
+
 
             &--fon {
 
@@ -927,7 +934,6 @@
 
     .main .buy--title--text--center p {
         font-size: 10px;
-        max-width: 205px;
     }
 
     .main .buy--title--text--count--block>h1 {
@@ -950,6 +956,7 @@
 
     .main .buy--title--text--count--block {
         gap: 10px;
+
     }
 
     .main .title--front--paragraphs--flex {
@@ -996,7 +1003,7 @@
         font-size: 10px;
     }
 
-  
+
 
     .data--regist {
         width: 743px;
@@ -1193,12 +1200,74 @@
         width: 100%;
     }
 
+    .main .buy--title {
+        grid-template-areas: 'img text text text';
+    }
+
+    .buy--title--text--count {
+        width: 100%;
+        max-width: 100% !important;
+        display: flex;
+        justify-content: center;
+
+        &--block {
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center !important;
+        }
+
+    }
+
+    .buy--title--text--top {
+        gap: 16px;
+        flex-direction: column-reverse;
+        text-align: center;
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+
+    }
+
+    .main .buy--title--text--top--proce {
+        margin-bottom: 0;
+        width: 100%;
+        justify-content: center;
+
+
+    }
+
+
+    .buy--title--text--center {
+        display: flex;
+        max-width: 100%;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+
+        p {
+            max-width: 100% !important;
+            width: 100% !important;
+
+            p {
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+        }
+    }
+
     .main .gallery--cards--fon.act {
-        width: 100% !important;
-        height: 500px !important;
         background-size: cover !important;
         background-position: center !important;
         margin-bottom: 30px;
+    }
+
+    .main .buy--where {
+        h1 {
+            font-size: 12px;
+        }
     }
 
     .main .buy--title--text--top>h1 {
@@ -1232,7 +1301,6 @@
     }
 
     .main .cupon--body {
-        align-items: flex-start;
         justify-content: flex-start;
         flex-direction: column;
         gap: 15px;
@@ -1323,6 +1391,12 @@
 }
 
 @media(max-width: 550px) {
+    .buy--title--text--count {
+        flex-direction: column;
+    }
+
+
+
     .main .title--pos.pos9 {
         left: 82px;
     }

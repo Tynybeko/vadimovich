@@ -1,0 +1,129 @@
+.myBurger {
+    top: 60px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    right: 0;
+    z-index: 9999;
+    background-color: rgba(66, 63, 63, 0.408);
+    width: 300px;
+    transition: all .2s ease-in-out;
+    transform: scale(0) translateY(-100%);
+    gap: 20px;
+
+    nav {
+        top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+
+        a {
+            color: #f7f7f7;
+            font-family: 'TroubleSide';
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            text-transform: uppercase;
+            text-decoration: none;
+            opacity: 0.4;
+            transition: 0.3s;
+
+            &.active {
+                opacity: 1;
+            }
+
+            &:hover {
+                opacity: 1;
+                transition: 0.3s;
+            }
+
+            &:focus {
+                opacity: 1;
+                transition: 0.3s;
+
+            }
+        }
+    }
+
+    a {
+        color: #F2F2F2;
+        font-family: 'TroubleSide';
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-transform: uppercase;
+        text-decoration: none;
+        opacity: 0.4;
+        transition: 0.3s;
+
+        &.activ {
+            opacity: 1;
+        }
+
+        &:hover {
+            opacity: 1;
+            transition: 0.3s;
+        }
+    }
+
+    .buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        padding-bottom: 10px;
+
+        &--leng {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+
+            & span {
+                color: #F2F2F2;
+                font-family: 'IBM Plex Sans';
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 900;
+                line-height: normal;
+            }
+
+            & .activ {
+                opacity: 1;
+            }
+
+            & h1 {
+                color: #F2F2F2;
+                text-align: center;
+                font-family: 'c Combe';
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                opacity: 0.4;
+                transition: 0.3s;
+                cursor: pointer;
+            }
+
+            & h1:focus {
+                opacity: 1;
+                transition: 0.3s;
+                cursor: pointer;
+
+            }
+
+        }
+
+    }
+
+
+
+}
+
+.myBurger-active {
+    transition: all .2s ease-in-out;
+    transform: scale(1) translateY(0);
+}

@@ -1,12 +1,10 @@
 .footer {
     background: url(/assets/svg/footer--fon.svg) top / cover;
     width: 100%;
-    height: 100%;
     padding-top: 80px;
     padding-bottom: 24px;
-    padding: 80px 40px 24px 40px;
-    position: relative;
     z-index: 2;
+    bottom: 0;
 
     &::before {
         content: "";
@@ -176,7 +174,7 @@
     .container {
         width: 1450px;
     }
-   
+
 }
 
 @media(max-width: 1470px) {
@@ -251,16 +249,13 @@
         width: 420px;
     }
 
-    .footer--body--top--navigate {
-        gap: 11px;
-    }
 
     .footer--body--top--net img {
         width: 24px;
     }
 
     .footer--body--end {
-        margin-top: 172px;
+        margin-top: 100px;
     }
 
     .footer--body--end p {
@@ -304,10 +299,83 @@
         top: 55px;
         left: -73px;
     }
+
+    .footer--body--top--navigate {
+        margin-top: -30px;
+        gap: 10px;
+
+    }
 }
 
 
 @media(max-width: 425px) {
+    .footer--body--top--logo--meet {
+        display: none;
+    }
+
+    .footer {
+        padding-top: 40px;
+    }
+
+    .footer--body--top--logo {
+        display: none;
+    }
+
+    .footer--body--top--net--know h1 {
+        display: none;
+    }
+
+    .footer--body--top {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+
+        &--navigate {
+            display: flex;
+            flex-direction: row;
+        }
+    }
+
+    .footer--body--end {
+        display: grid;
+        align-items: center;
+        width: 100%;
+        justify-items: center;
+
+        h1 {
+            grid-area: 'pro';
+        }
+
+        & :nth-child(1) {
+            grid-area: 'l';
+
+        }
+
+        & :nth-child(3) {
+            grid-area: 'r';
+
+        }
+
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+
+    }
+
+    .footer--body--top--navigate {
+        margin: 0;
+
+        a {
+            font-size: 10px;
+        }
+    }
+
+    .footer--body {
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .container {
         width: 375px;
     }
@@ -335,6 +403,7 @@
         top: 55px;
         left: -56px;
     }
+
 }
 
 @media(max-width: 375px) {
@@ -342,9 +411,6 @@
         width: 300px;
     }
 
-    .footer::before {
-        background-size: cover;
-    }
 
     .footer--body--end p {
         text-align: center;
@@ -354,9 +420,6 @@
         text-align: center;
     }
 
-    .footer--body--end {
-        gap: 20px;
-    }
 
     .footer--body--top--logo--meet {
         top: 63px;
@@ -371,5 +434,8 @@
     .footer--body--top--net--know h1 {
         top: 60px;
         left: -43px;
+
     }
+
+
 }

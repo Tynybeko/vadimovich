@@ -1,22 +1,39 @@
 'use client'
-import React, { SetStateAction, useEffect, useState } from 'react'
+
+import React, { useEffect, useState } from 'react'
 import '../styles/Header.scss'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useTranslation } from 'react-i18next'
+import BurgerMenu from './burgerMenu'
 import lang from '../utils/language'
+import { getCategories } from './goods'
+
+
+export interface nav {
+    title: string,
+    href: string,
+
+}
 
 
 export default function Header() {
     const { asPath, pathname, locale } = useRouter()
     const t = locale == 'ru' ? lang.ru : lang.kg
+    const [categories, setCategories] = useState<nav[]>([])
 
-    const navlinks = [
-        { title: 'Каталог', href: '/', desc: 'catolog' },
-        { title: 'Туризм', href: '/turism', desc: 'turism' },
-        { title: t.nav.bomber, href: '/bombers', desc: 'bombers' },
-        { title: t.nav.shoes, href: '/shoes', desc: 'shoes' },
-    ]
+
+    useEffect(() => {
+        getCategories().then(res => {
+            setCategories([{ title: 'Каталог', href: '/' }])
+            res?.results.forEach(({ id, title_ky, title }: { id: number, title_ky: string, title: string }, index: number) => {
+                if (index < 3) {
+                    setCategories(prev => [...prev, { title: (locale == 'ru' ? title : title_ky), href: `/?category_id=${id}` }])
+                }
+            })
+        })
+    }, [locale])
+
+    const [isBurger, setBurgerState] = useState<boolean>(false)
     const handleChangeLang = (e: React.MouseEvent<HTMLHeadingElement>) => {
 
     }
@@ -31,9 +48,9 @@ export default function Header() {
                     </div>
                     <div className="header--body--burger">
                         <nav className="header--body--burger--navigat">
-                        {
-                                navlinks.map(({ title, href, desc }, index) => (
-                                    <Link key={index} className={(pathname.includes(desc) || pathname == href) ? 'activ' : ''} href={href}>{title}</Link>
+                            {
+                                categories.map(({ title, href }, index) => (
+                                    <Link key={index} className={(pathname == href) ? 'activ' : ''} href={href}>{title}</Link>
                                 ))
                             }
                         </nav>
@@ -51,8 +68,17 @@ export default function Header() {
                             <button><Link href="/cart">{t.nav.cart}</Link></button>
                         </div>
                         <div className="header--body--menu">
-                            <img className="open" src="/assets/svg/burger--menu--open.svg" alt="burger--button" />
-                            <img className="close" src="/assets/svg/close--burger--menu.svg" alt="burger--button" />
+                            <BurgerMenu isBurger={isBurger} />
+                            {
+                                !isBurger ? <img onClick={() => {
+                                    setBurgerState(true)
+                                }} className="open" src="/assets/svg/burger--menu--open.svg" alt="burger--button" /> :
+                                    <img onClick={() => {
+
+                                        setBurgerState(false)
+                                    }} className="open" src="/assets/svg/close--burger--menu.svg" alt="burger--button" />
+                            }
+
                         </div>
                     </div>
                 </div>

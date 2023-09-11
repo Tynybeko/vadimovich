@@ -1,21 +1,32 @@
 "use client"
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../styles/Footer.scss'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import lang from '@/utils/language'
+import type { nav } from './header'
+import { getCategories } from './goods'
+
+
 
 
 export default function footer() {
     const { asPath, pathname, locale } = useRouter()
     const t = locale == 'ru' ? lang.ru : lang.kg
+    const [categories, setCategories] = useState<nav[]>([])
 
-    const navlinks = [
-        { title: 'Каталог', href: '/', desc: 'catolog' },
-        { title: 'Туризм', href: '/turism', desc: 'turism' },
-        { title: t.nav.bomber, href: '/bombers', desc: 'bombers' },
-        { title: t.nav.shoes, href: '/shoes', desc: 'shoes' },
-    ]
+
+    useEffect(() => {
+        getCategories().then(res => {
+            setCategories([{ title: 'Каталог', href: '/' }])
+            res?.results.forEach(({ id, title_ky, title }: { id: number, title_ky: string, title: string }, index: number) => {
+                if (index < 3) {
+                    setCategories(prev => [...prev, { title: (locale == 'ru' ? title : title_ky), href: `/?category_id=${id}` }])
+                }
+            })
+        })
+    }, [locale])
+
 
 
     return (
@@ -34,8 +45,8 @@ export default function footer() {
                         </div>
                         <nav className="footer--body--top--navigate">
                             {
-                                navlinks.map(({ title, href, desc }, index) => (
-                                    <Link key={index} className={pathname.includes(desc) || pathname == href ? 'activ' : ''} href={href}>{title}</Link>
+                                categories.map(({ title, href }, index) => (
+                                    <Link key={index} className={pathname == href ? 'activ' : ''} href={href}>{title}</Link>
                                 ))
                             }
                         </nav>

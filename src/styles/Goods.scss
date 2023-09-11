@@ -14,14 +14,16 @@
             font-style: normal;
             font-weight: 400;
             line-height: normal;
+            margin-right: 20px;
         }
 
         &--buttons {
             position: relative;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: end;
             gap: 14px;
+            width: 100%;
 
 
 
@@ -30,6 +32,16 @@
                 transition: all .2s ease-in-out;
                 transform: scale(1) translateY(0);
 
+            }
+
+            .button_ordering-active {
+                button {
+                    img {
+                        transform: rotate(180deg);
+
+                    }
+
+                }
             }
 
             & button {
@@ -50,22 +62,31 @@
                 cursor: pointer;
             }
 
+            .button_ordering-active {
+                transform: rotate(180deg);
+
+            }
+
             .categories {
                 position: absolute;
-                max-width: 250px;
                 transform: scale(0) translateY(-100%);
                 padding: 15px 0;
                 transition: all .2s ease-in-out;
                 display: flex;
-                gap: 4px;
                 top: 34px;
                 flex-direction: column;
                 z-index: 9999;
                 justify-content: center;
                 align-items: center;
+                width: 100%;
+
+                a {
+                    width: 100%;
+                    text-decoration: none;
+                }
 
                 button {
-                    width: 200px;
+                    width: 100%;
                     padding: 15px 0;
 
                 }
@@ -93,14 +114,45 @@
         margin-bottom: 41px;
         display: flex;
         flex-wrap: wrap;
+        width: 100%;
         justify-content: center;
         gap: 21px;
+
+        .swiper-slide {
+            width: 546px;
+
+            .gallery--cards--fon {
+                background: url(../../public/assets/img/man.png) center / cover;
+                width: 100%;
+                position: relative;
+                height: 546px;
+                display: block;
+            }
+
+            .gallery--cards--fon::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url(../../public/assets/img/man--fon.png) center;
+            }
+        }
 
         &--fon {
             background: url(../../public/assets/img/man.png) center / cover;
             width: 546px;
-            height: 658px;
             position: relative;
+            height: 546px;
+            transition: .2s ease-in-out;
+
+
+            &:hover {
+                transition: .2s ease-in-out;
+                transform: scale(1.05);
+            }
+
 
             &::before {
                 content: "";

@@ -4,6 +4,7 @@
     height: 100%;
     padding: 20px 0;
     position: relative;
+    z-index: 99;
 
     &::before {
         content: "";
@@ -78,6 +79,11 @@
                     justify-content: center;
                     gap: 8px;
 
+
+                    a:hover {
+                        opacity: 1;
+                    }
+
                     & span {
                         color: #F2F2F2;
                         font-family: 'IBM Plex Sans';
@@ -105,6 +111,13 @@
                     }
 
                     & h1:focus {
+                        opacity: 1;
+                        transition: 0.3s;
+                        cursor: pointer;
+
+                    }
+
+                    & h1:hover {
                         opacity: 1;
                         transition: 0.3s;
                         cursor: pointer;
@@ -159,6 +172,7 @@
         }
     }
 }
+
 @media(max-width: 1690px) {
     .container {
         width: 1450px;
@@ -223,17 +237,19 @@
     }
 
     .header--body--burger {
-        width: 25px;
-        margin-left: 0;
+        width: 40%;
+        gap: 10px;
+        padding-right: 20px;
     }
 
     .header--body--burger--navigat {
         display: none;
     }
 
-    .header--body--burger--buttons {
+    .header--body--burger--buttons--leng {
         display: none;
     }
+
 
     .header--body--menu {
         display: block;

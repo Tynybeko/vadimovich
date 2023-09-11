@@ -1,3 +1,4 @@
+
 export interface Item {
     id: number;
     title: string;
@@ -5,11 +6,21 @@ export interface Item {
     description_ky: string;
     content: string;
     content_ky: string;
-    category: number;
+    category: string;
     price: number;
     photo: string;
     created_date: string;
     discount: number;
-    sizes: any[]; // You can replace 'any[]' with the actual type for sizes if known
+    sizes: any[];
     discounted_price: number;
+    buySize: buySize[]
+}
+
+
+
+export interface buySize {
+    product: number,
+    quantity: number,
+    sizeitem: string,
+    price: number
 }
