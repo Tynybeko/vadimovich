@@ -71,8 +71,6 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
                             loop={true}
                             autoplay={{
                                 delay: 2000,
-                                disableOnInteraction: false
-
                             }}
                             breakpoints={{
                                 0: {
@@ -82,14 +80,20 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
                                 },
                                 375: {
                                     slidesPerView: 1,
-                                    width: null
+                                    width: null,
+                                    autoplay: true
+
                                 },
                                 780: {
 
-                                    slidesPerView: 2
+                                    slidesPerView: 2,
+                                    autoplay: true
+
                                 },
                                 1075: {
-                                    slidesPerView: 3
+                                    slidesPerView: 3,
+                                    autoplay: true
+
                                 }
                             }}
                             speed={3000}
@@ -108,3 +112,4 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
         </div>
     )
 }
+

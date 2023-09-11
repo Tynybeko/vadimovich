@@ -235,7 +235,6 @@ const BuyModal: React.FC<BuyModalProps> = ({ isOpen, setClose }) => {
                             <label htmlFor="">
                                 <input
                                     {...register("city", { required: "Заполните форму" })}
-                                    type="tel"
                                     id='city'
                                     name='city'
                                     placeholder={t.model.city}
