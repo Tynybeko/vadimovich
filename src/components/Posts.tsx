@@ -18,7 +18,7 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
     const category = query?.category
     const search = new URLSearchParams(query as Record<string, string>).toString()
     const [isLoading, setLoading] = useState<boolean>(false)
-    
+
     let myID = 0
     if (query?.id) {
         myID = +query?.id
@@ -29,7 +29,7 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
         if (isSingle) {
             getCategories().then(res => {
                 const myData = []
-                for (let {items} of res.results) {
+                for (let { items } of res.results) {
                     myData.push(...items)
                 }
                 setItems([...myData])
@@ -76,10 +76,13 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
                             }}
                             breakpoints={{
                                 0: {
-                                    slidesPerView: 0,
+                                    slidesPerView: 1,
+                                    width: 300,
+                                    autoplay: true
                                 },
                                 375: {
                                     slidesPerView: 1,
+                                    width: null
                                 },
                                 780: {
 

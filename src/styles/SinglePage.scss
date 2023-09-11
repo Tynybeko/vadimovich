@@ -1,6 +1,7 @@
 .main {
-position: relative;
-z-index: 8;
+    position: relative;
+    z-index: 8;
+
     .title {
         margin-top: 50px;
 
@@ -791,7 +792,7 @@ z-index: 8;
 
     .main .title--pos.pos5 {
         right: 89px;
-    top: -62px;
+        top: -62px;
     }
 
     .main .title--pos.pos5 h1 {
@@ -1129,11 +1130,40 @@ z-index: 8;
     }
 
     .main .gallery--cards--fon.act {
-        width: 145px;
-        height: 176px;
     }
 
     .main .gallery--cards--fon.act::before {
         background-size: contain;
     }
+
+
+
+    .main .gallery--cards {
+        .swiper-slide-next {
+            width: 300px !important;
+        }
+
+        .swiper-slide-prev {
+            width: 300px !important;
+        }
+
+        .swiper-slide-prev {
+            width: 300px !important;
+        }
+
+        .swiper-slide {
+            width: 300px !important;
+            height: 400px !important;
+
+            .gallery--cards--fon {
+                width: 300px !important;
+                height: 400px !important;
+            }
+        }
+
+    }
+
+
+
+
 }
