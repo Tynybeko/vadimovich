@@ -71,6 +71,8 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
                             loop={true}
                             autoplay={{
                                 delay: 2000,
+                                disableOnInteraction: true
+
                             }}
                             breakpoints={{
                                 0: {
