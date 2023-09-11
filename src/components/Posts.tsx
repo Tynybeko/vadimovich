@@ -78,23 +78,19 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
                                 0: {
                                     slidesPerView: 1,
                                     width: 300,
-                                    autoplay: true
                                 },
                                 375: {
                                     slidesPerView: 1,
                                     width: null,
-                                    autoplay: true
 
                                 },
                                 780: {
 
                                     slidesPerView: 2,
-                                    autoplay: true
 
                                 },
                                 1075: {
                                     slidesPerView: 3,
-                                    autoplay: true
 
                                 }
                             }}
