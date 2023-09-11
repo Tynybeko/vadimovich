@@ -34,9 +34,7 @@ export default function Header() {
     }, [locale])
 
     const [isBurger, setBurgerState] = useState<boolean>(false)
-    const handleChangeLang = (e: React.MouseEvent<HTMLHeadingElement>) => {
 
-    }
 
 
     return (
@@ -44,7 +42,9 @@ export default function Header() {
             <div className="container">
                 <div className="header--body">
                     <div className="header--body--logo">
-                        <img src="/assets/img/site--logo.png" alt="logo" />
+                        <Link href={'/'}>
+                            <img src="/assets/img/site--logo.png" alt="logo" />
+                        </Link>
                     </div>
                     <div className="header--body--burger">
                         <nav className="header--body--burger--navigat">
@@ -57,11 +57,11 @@ export default function Header() {
                         <div className="header--body--burger--buttons">
                             <div className="header--body--burger--buttons--leng">
                                 <Link href={asPath} locale={'ru'}>
-                                    <h1 onClick={handleChangeLang} className={locale == 'ru' ? 'activ' : ''}>Ru</h1>
+                                    <h1 className={locale == 'ru' ? 'activ' : ''}>Ru</h1>
                                 </Link>
                                 <span>\</span>
                                 <Link href={asPath} locale='kg'>
-                                    <h1 onClick={handleChangeLang} className={locale == 'kg' ? 'activ' : ''} >Kg</h1>
+                                    <h1 className={locale == 'kg' ? 'activ' : ''} >Kg</h1>
 
                                 </Link>
                             </div>

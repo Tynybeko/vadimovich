@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Navigation, Autoplay, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { getCategories } from './goods';
 
 
 
@@ -17,7 +18,6 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
     const category = query?.category
     const search = new URLSearchParams(query as Record<string, string>).toString()
     const [isLoading, setLoading] = useState<boolean>(false)
-    console.log(query.id);
     
     let myID = 0
     if (query?.id) {
@@ -26,6 +26,15 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
 
 
     useEffect(() => {
+        if (isSingle) {
+            getCategories().then(res => {
+                const myData = []
+                for (let {items} of res.results) {
+                    myData.push(...items)
+                }
+                setItems([...myData])
+            })
+        }
         getItems(search)
             .then(res => {
                 setItems([...(res?.results ?? [])])

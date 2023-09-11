@@ -140,17 +140,27 @@
                         line-height: normal;
                         justify-content: space-between;
                         width: 100%;
-                        padding: 18px;
                         float: left;
+                        overflow: hidden;
+                        text-align: center;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        margin-bottom: 20px;
+                        padding: 20px 10px;
 
                         p {
                             width: 100%;
-                            text-align: center;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+
+
                         }
 
 
                         img {
                             width: 40px;
+                            margin-right: 5px;
                         }
 
                         input {
@@ -166,6 +176,8 @@
                         font-family: 'TroubleSide';
                         cursor: pointer;
                         font-size: 20px;
+
+
                     }
 
 
@@ -179,6 +191,8 @@
                     //     line-height: normal;
                     // }
                 }
+
+
 
                 &>button {
                     color: #F2F2F2;
@@ -340,6 +354,21 @@ input {
         padding: 0 29px;
     }
 
+    .data--regist--title--inputs .form-inner .radio-input {
+
+
+        padding: 17px 5px;
+
+        p {
+            font-size: 14px;
+        }
+
+        img {
+            width: 15px;
+            margin-right: 5px;
+        }
+    }
+
     .data--regist--title--inputs .form-inner button {
         width: 90%;
         height: 32px;
@@ -351,6 +380,7 @@ input {
         font-size: 7px;
         padding: 10px 35px;
     }
+
     .data--regist--close {
         top: 35px;
         right: 10px;
@@ -388,11 +418,13 @@ input {
         padding-right: 0;
         padding-left: 0;
     }
+
     .data--regist--close {
         top: 20px;
         right: 10px;
     }
-    .data--regist--title > h1 {
+
+    .data--regist--title>h1 {
         margin-bottom: 0;
     }
 
@@ -400,17 +432,33 @@ input {
         padding: 20px;
     }
 
+    .data--regist--title--inputs .form-inner .radio-input {
+        padding: 10px 5px;
+
+        p {
+            font-size: 7px;
+        }
+
+        img {
+            width: 15px;
+            margin-right: 5px;
+        }
+    }
+
     .data--regist--title--inputs .form-inner {
         padding: 20px;
+
         input {
             font-size: 9px;
             padding: 10px 0;
 
 
         }
+
         .text-red-600 {
             font-size: 8px;
         }
+
         input::placeholder {
             font-size: 9px;
             padding: 0;
@@ -418,7 +466,8 @@ input {
 
         }
     }
-    .data--regist--title--inputs > button {
+
+    .data--regist--title--inputs>button {
         margin-top: 0;
     }
 }
@@ -432,7 +481,8 @@ input {
         top: 20px;
         right: 10px;
     }
-    .data--regist--title > h1 {
+
+    .data--regist--title>h1 {
         margin-bottom: 0;
     }
 
@@ -440,25 +490,45 @@ input {
         padding: 20px;
     }
 
+    .data--regist--title--inputs .form-inner .radio-input {
+        padding: 5px 5px;
+
+        p {
+            font-size: 7px;
+        }
+
+        img {
+            width: 15px;
+            margin-right: 5px;
+        }
+    }
+
     .data--regist--title--inputs .form-inner {
         padding: 20px;
+
         input {
             font-size: 9px;
             padding: 10px 0;
 
 
         }
+
         .text-red-600 {
-            font-size: 8px;
+            font-size: 7px;
         }
+
         input::placeholder {
             font-size: 9px;
             padding: 0;
 
 
         }
+
+
+
     }
-    .data--regist--title--inputs > button {
+
+    .data--regist--title--inputs>button {
         margin-top: 0;
     }
 
@@ -474,7 +544,8 @@ input {
         top: 20px;
         right: 10px;
     }
-    .data--regist--title > h1 {
+
+    .data--regist--title>h1 {
         margin-bottom: 0;
     }
 
@@ -482,17 +553,33 @@ input {
         padding: 20px;
     }
 
+    .data--regist--title--inputs .form-inner .radio-input {
+        padding: 10px 5px;
+
+        p {
+            font-size: 7px;
+        }
+
+        img {
+            width: 15px;
+            margin-right: 5px;
+        }
+    }
+
     .data--regist--title--inputs .form-inner {
         padding: 20px;
+
         input {
             font-size: 9px;
             padding: 10px 0;
 
 
         }
+
         .text-red-600 {
             font-size: 8px;
         }
+
         input::placeholder {
             font-size: 9px;
             padding: 0;
@@ -501,7 +588,7 @@ input {
         }
     }
 
-    .data--regist--title--inputs > button {
+    .data--regist--title--inputs>button {
         margin-top: 0;
     }
 

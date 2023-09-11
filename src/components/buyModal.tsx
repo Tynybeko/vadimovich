@@ -11,7 +11,6 @@ import lang from '@/utils/language';
 import { useItemsContext } from '@/hooks/CartContect';
 import { Item, buySize } from '@/utils/IGoods';
 import { ITEM_API } from '@/utils/axios';
-import { RSC } from 'next/dist/client/components/app-router-headers';
 
 type FormData = z.infer<typeof userSchema>;
 
@@ -155,6 +154,7 @@ const BuyModal: React.FC<BuyModalProps> = ({ isOpen, setClose }) => {
                                     {...register("whatsapp_num", { required: "Заполните форму" })}
                                     id='whatsapp_num'
                                     name='whatsapp_num'
+                                    type='tel'
                                     placeholder="WhatsApp"
 
                                 />
@@ -166,6 +166,7 @@ const BuyModal: React.FC<BuyModalProps> = ({ isOpen, setClose }) => {
                                 <input
                                     {...register("number", { required: "Заполните форму" })}
                                     id='number'
+                                    type='tel'
                                     name='number'
                                     placeholder="Телефон"
                                 />
@@ -185,7 +186,7 @@ const BuyModal: React.FC<BuyModalProps> = ({ isOpen, setClose }) => {
                     </div>
                     <h1>Доставка</h1>
                     <div className="data--regist--title--inputs">
-                        <div className='form-inner'>
+                        <div className='form-inner radio-form-inner'>
                             <label className='radio-input' htmlFor="delivery">
                                 {selectDel == 'Самовызов' ? <img src="/assets/svg/radio-checked.svg" alt="" /> : (<img src="/assets/svg/btn--fon.svg" alt="" />)}
                                 <input

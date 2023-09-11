@@ -282,6 +282,8 @@
             &--count {
                 display: flex;
                 align-items: flex-end;
+                justify-content: end;
+                width: 100%;
 
                 &>h1 {
                     color: #F2F2F2;
@@ -1036,6 +1038,7 @@
         width: 420px;
     }
 
+   
     .main .title--pos.pos2 {
         right: 0px;
     }
@@ -1487,6 +1490,9 @@
 }
 
 @media(max-width: 425px) {
+    .main .cupon--body--count {
+        width: 100%;
+    }
     .main .buy--title {
         padding: 0 20px;
         grid-template-columns: 1fr;

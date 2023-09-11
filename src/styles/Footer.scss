@@ -245,6 +245,8 @@
 }
 
 @media(max-width: 780px) {
+    
+ 
     .container {
         width: 420px;
     }
@@ -313,6 +315,10 @@
         display: none;
     }
 
+
+    .footer--body--end {
+        padding: 0 20px;
+    }
     .footer {
         padding-top: 40px;
     }
