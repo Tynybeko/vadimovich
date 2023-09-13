@@ -4,8 +4,8 @@
     "description": "Магазин одежды Vadimovich",
     "icons": [
         {
-            "src": "/android-chrome-192x192.png",
-            "sizes": "192x192",
+            "src": "/site--full--logo.png",
+            "sizes": "any",
             "type": "image/png"
         },
         {
