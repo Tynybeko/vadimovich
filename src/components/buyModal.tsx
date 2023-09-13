@@ -84,7 +84,7 @@ const BuyModal: React.FC<BuyModalProps> = ({ isOpen, setClose }) => {
             setTimeout(() => {
                 setResSucces(true)
                 setStep(0)
-            }, 1000)
+            }, 200)
             setItems([])
         })
 

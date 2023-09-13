@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { SetStateAction, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import lang from '@/utils/language'
@@ -9,16 +9,12 @@ import type { nav } from './header'
 
 
 
-export default function BurgerMenu({ isBurger, navs }: { isBurger: boolean, navs: nav[] }) {
+export default function BurgerMenu({ isBurger, navs, setBurger }: { isBurger: boolean, navs: nav[], setBurger: React.Dispatch<SetStateAction<boolean>> }) {
     const { pathname, asPath, locale } = useRouter()
     const t = locale == 'ru' ? lang.ru : lang.kg
-    const navlinks = [
-        { title: 'Каталог', href: '/', desc: 'catolog' },
-        { title: 'Туризм', href: '/turism', desc: 'turism' },
-        { title: t.nav.bomber, href: '/bombers', desc: 'bombers' },
-        { title: t.nav.shoes, href: '/shoes', desc: 'shoes' },
-    ]
-
+    const handleClose = () => {
+        setBurger(prev => !prev)
+    }
 
 
 
@@ -27,21 +23,21 @@ export default function BurgerMenu({ isBurger, navs }: { isBurger: boolean, navs
             <nav>
                 {
                     navs.map(({ title, href }, index) => (
-                        <Link key={index} className={(pathname == href) ? 'activ' : ''} href={href}>{title}</Link>
+                        <Link key={index} onClick={handleClose} className={(pathname == href) ? 'activ' : ''} href={href}>{title}</Link>
                     ))
                 }
             </nav>
             <div className="buttons">
                 <div className="buttons--leng">
-                    <Link href={asPath} locale={'ru'}>
+                    <Link onClick={handleClose} href={asPath} locale={'ru'}>
                         <h1 className={locale == 'ru' ? 'activ' : ''}>Ru</h1>
                     </Link>
                     <span>\</span>
-                    <Link href={asPath} locale='kg'>
+                    <Link onClick={handleClose} href={asPath} locale='kg'>
                         <h1 className={locale == 'kg' ? 'activ' : ''} >Kg</h1>
                     </Link>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

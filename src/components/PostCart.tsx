@@ -15,7 +15,6 @@ export default function PostCart({ item }: { item: Item }) {
     const [items, setItems] = useItemsContext()
     const [itemState, setItemState] = useState<Item>(item)
     const [changedSize, setSize] = useState<buySize>(itemState.buySize[0])
-
     useEffect(() => {
         if (items.length) {
             localStorage.setItem('cart', JSON.stringify(items))
@@ -115,7 +114,7 @@ export default function PostCart({ item }: { item: Item }) {
                                             setSize(newSize as buySize)
                                             items.splice(items.findIndex((elem: Item) => elem.id == item.id), 1, item)
                                             setItems(items)
-                                        }} className={`title--front--paragraphs--flex--btn--act ${size.size.title == changedSize?.sizeitem || items.some((elem: Item) => elem.buySize.some((sizes: buySize) => sizes.sizeitem == size.size.title && Boolean(sizes?.quantity) == true) == true) ? 'activ' : ''}`}>{size.size.title}</button>
+                                        }} className={`title--front--paragraphs--flex--btn--act ${size.size.title == changedSize?.sizeitem || items.some((elem: Item) => elem.id == item.id &&  elem.buySize.some((sizes: buySize) => (sizes.sizeitem == size.size.title && Boolean(sizes?.quantity)) == true) == true) ? 'activ' : ''}`}>{size.size.title}</button>
                                     ))
                                 }
 

@@ -12,7 +12,6 @@ import { getCategories } from './goods'
 export interface nav {
     title: string,
     href: string,
-
 }
 
 
@@ -68,7 +67,7 @@ export default function Header() {
                             <button><Link href="/cart">{t.nav.cart}</Link></button>
                         </div>
                         <div className="header--body--menu">
-                            <BurgerMenu navs={categories} isBurger={isBurger} />
+                            <BurgerMenu setBurger={setBurgerState} navs={categories} isBurger={isBurger} />
                             {
                                 !isBurger ? <img onClick={() => {
                                     setBurgerState(true)
