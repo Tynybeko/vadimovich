@@ -43,13 +43,62 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
             })
     }, [search])
 
+
+    if (isSingle) {
+        return (
+            <Swiper
+                modules={[Navigation, Autoplay, Pagination, Scrollbar, A11y]}
+                spaceBetween={20}
+                slidesPerView={3}
+                navigation
+                loop={true}
+                autoplay={{
+                    delay: 2000,
+                    disableOnInteraction: true
+
+                }}
+                breakpoints={{
+                    0: {
+                        slidesPerView: 1,
+                        width: 300,
+                    },
+                    375: {
+                        slidesPerView: 1,
+                        width: null,
+
+                    },
+                    780: {
+
+                        slidesPerView: 2,
+
+                    },
+                    1075: {
+                        slidesPerView: 3,
+
+                    }
+                }}
+                speed={3000}
+                scrollbar={{ draggable: true }}
+            >
+                {
+                    items.filter((item: Item) => item.id != +myID).sort((a: any, b: any) => 0.5 - Math.random()).map((item: Item) =>
+                    (
+
+                        <SwiperSlide>  <Link className="gallery--cards--fon" style={{ backgroundImage: `url(${item.photo})` }} href={`/catalog/${item.id}`}></Link></SwiperSlide>
+                    ))
+
+                }
+            </Swiper>
+        )
+    }
+
     return (
         <div className="gallery--cards">
             {
                 !isLoading ?
-                    <h1>Loading...</h1>
+                    <div className='loading'></div>
                     :
-                    !isSingle ?
+                    !items.length ? (<h1 className='ZERO'>Уже скоро!</h1>) :
                         items.map((item: Item) =>
                             category ?
                                 (item?.category == category ?
@@ -62,50 +111,6 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
                                     <Link className="gallery--cards--fon" style={{ backgroundImage: `url(${item.photo})` }} href={`/catalog/${item.id}`}></Link>
                                 )
                         )
-                        :
-                        <Swiper
-                            modules={[Navigation, Autoplay, Pagination, Scrollbar, A11y]}
-                            spaceBetween={20}
-                            slidesPerView={3}
-                            navigation
-                            loop={true}
-                            autoplay={{
-                                delay: 2000,
-                                disableOnInteraction: true
-
-                            }}
-                            breakpoints={{
-                                0: {
-                                    slidesPerView: 1,
-                                    width: 300,
-                                },
-                                375: {
-                                    slidesPerView: 1,
-                                    width: null,
-
-                                },
-                                780: {
-
-                                    slidesPerView: 2,
-
-                                },
-                                1075: {
-                                    slidesPerView: 3,
-
-                                }
-                            }}
-                            speed={3000}
-                            scrollbar={{ draggable: true }}
-                        >
-                            {
-                                items.filter((item: Item) => item.id != +myID).sort((a: any, b: any) => 0.5 - Math.random()).map((item: Item) =>
-                                (
-
-                                    <SwiperSlide>  <Link className="gallery--cards--fon" style={{ backgroundImage: `url(${item.photo})` }} href={`/catalog/${item.id}`}></Link></SwiperSlide>
-                                ))
-
-                            }
-                        </Swiper>
             }
         </div>
     )

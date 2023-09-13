@@ -42,7 +42,6 @@ export default function Goods() {
         if (query) {
             getCategories().then(res => {
                 setCategories(prev => [...(res?.results ?? [])])
-
                 if (category) {
                     setCat(prev => ({ isCheckCat: false, selectedCat: selectCategory(res?.results, category) }))
                     setPageCount(res?.results.find((item: any) => item.id == category).items.length)
@@ -52,12 +51,10 @@ export default function Goods() {
                 }
             })
             setSort((query?.ordering ?? '') as string)
-            console.log(query.ordering);
         }
 
     }, [query])
 
-    const search = new URLSearchParams()
 
     return (
         <div className="gallery">
@@ -70,7 +67,7 @@ export default function Goods() {
                         <div className={`categories  ${isCheckCat ? 'active' : ''}`}>
                             {
                                 categories.map(item => item?.title != selectedCat ? (
-                                    <Link href={`/?${new URLSearchParams(someQuery as Record<string, string>).toString() || `page=1`}&category_id=${item?.id}`}>
+                                    <Link href={`/?category_id=${item?.id}`}>
                                         <button onClick={() => {
                                             setCat(prev => ({ ...prev, selectedCat: locale == 'ru' ? item?.title : item?.title_ky }))
                                         }}>{locale == 'ru' ? item?.title : item?.title_ky}</button>
@@ -94,19 +91,17 @@ export default function Goods() {
                     <button onClick={() => {
                         const { ordering, ...someQuery } = query
                         const queryString = new URLSearchParams(someQuery as Record<string, string>).toString()
-                        console.log(ordering);
-
                         let url;
                         if (!sort) {
-                            url = `/?ordering=${"discount"}${queryString ? `&${queryString}` : ''}`
+                            url = `/?ordering=discount${queryString ? `&${queryString}` : ''}`
                             setSort('discount')
                             push(url)
                         } else if (sort == 'discount') {
-                            url = `/?ordering=${"-discount"}${queryString ? `&${queryString}` : ''}`
+                            url = `/?ordering=-discount${queryString ? `&${queryString}` : ''}`
                             setSort('-discount')
                             push(url)
                         } else if (sort == '-discount') {
-                            url = `/?ordering=${"discount"}${queryString ? `&${queryString}` : ''}`
+                            url = `/?ordering=discount${queryString ? `&${queryString}` : ''}`
                             setSort('discount')
                             push(url)
                         }

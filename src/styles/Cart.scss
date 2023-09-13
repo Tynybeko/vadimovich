@@ -118,6 +118,7 @@
                         width: 10px !important;
                         display: block;
                         background-color: grey;
+
                         &-thumb {
                             background-color: white;
                         }
@@ -447,6 +448,7 @@
                         align-items: center;
                         justify-content: center;
                         gap: 8px;
+                        position: relative;
 
                         &--act {
                             width: 36px;
@@ -464,6 +466,24 @@
                             font-weight: 400;
                             line-height: normal;
                             cursor: pointer;
+
+
+                        }
+
+                        .changed {
+                            transition: .2s ease-in-out;
+                            color: rgb(5, 5, 5);
+                            opacity: 1;
+
+                            &::after {
+                                content: '';
+                                position: absolute;
+                                background-color: #f20509;
+                                width: 50%;
+                                height: 4px;
+                                bottom: -10px;
+                                transition: .2s ease-in-out;
+                            }
                         }
                     }
                 }
@@ -1038,7 +1058,7 @@
         width: 420px;
     }
 
-   
+
     .main .title--pos.pos2 {
         right: 0px;
     }
@@ -1493,6 +1513,7 @@
     .main .cupon--body--count {
         width: 100%;
     }
+
     .main .buy--title {
         padding: 0 20px;
         grid-template-columns: 1fr;

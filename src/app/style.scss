@@ -50,6 +50,17 @@ html {
   src: url('../../public/font/IBMPlexSans/IBMPlexSans-SemiBold.ttf') format('truetype');
 }
 
+
+.loading {
+  position: fixed;
+  top: 0;
+  width: -webkit-fill-available;
+  width: -moz-available;
+  z-index: 3;
+}
+
+
+
 .font {
   background-image: url('../../public/assets/img/backgroun--img--fon.png');
   background-position: center;
