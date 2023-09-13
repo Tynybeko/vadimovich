@@ -1,14 +1,15 @@
 .myBurger {
-    top: 60px;
+    top: 0;
+    padding-top: 100px;
     position: absolute;
     display: flex;
     flex-direction: column;
     right: 0;
-    z-index: 9999999;
+    z-index: 999;
     background-color: rgba(66, 63, 63, 0.829);
     width: 300px;
-    transition: all .2s ease-in-out;
-    transform: scale(0) translateY(-100%);
+    transition: all .3s ease-in-out;
+    transform: translateX(100%);
     gap: 20px;
 
     nav {
@@ -124,6 +125,6 @@
 }
 
 .myBurger-active {
-    transition: all .2s ease-in-out;
-    transform: scale(1) translateY(0);
+    transition: all .3s ease-in-out;
+    transform: translateX(0);
 }
