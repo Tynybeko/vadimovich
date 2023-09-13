@@ -21,7 +21,7 @@ export const userSchema = z.object({
         if (!value) {
             return false
         }
-        const regex = /^[^0-9\/W\g]*$/;
+        const regex = /^[^0-9/W\g]*$/;
         return regex.test(`${value}`)
     }, 'format'),
     country: z.custom<string>((value) => {
