@@ -21,20 +21,22 @@ export const userSchema = z.object({
         if (!value) {
             return false
         }
-        const regex = /^[^0-9/W\g]*$/;
+        const regex = /^[a-zA-Zа-яА-Я]*$/;
         return regex.test(`${value}`)
     }, 'format'),
     country: z.custom<string>((value) => {
         if (!value) {
             return false
         }
-        return true
+        const regex = /^[a-zA-Zа-яА-Я]*$/;
+        return regex.test(`${value}`)
     }, 'format'),
     city: z.custom<string>((value) => {
         if (!value) {
             return false
         }
-        return true
+        const regex = /^[a-zA-Zа-яА-Я]*$/;
+        return regex.test(`${value}`)
     }, 'format'),
     shipping_address: z.string().refine(value => value, 'format'),
     delivery: z.enum(['Самовызов', 'Фиксированая стоимость доставки по странам СНГ', 'Фиксированая стоимость доставки']),

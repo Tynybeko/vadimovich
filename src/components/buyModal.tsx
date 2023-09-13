@@ -91,6 +91,8 @@ const BuyModal: React.FC<BuyModalProps> = ({ isOpen, setClose }) => {
     }
 
     const nextModel = () => {
+        console.log(errors);
+        
         if (step == 1 && (getValues(['order_name', 'number', 'whatsapp_num', 'email']).every(item => Boolean(item) == true))) {
             for (let [key, { message }] of Object.entries(errors)) {
                 if (key != 'country' && key != 'city' && key != 'payment' && key != "shipping_address" && Boolean(message)) {
