@@ -6,12 +6,8 @@ import { useState, useEffect } from 'react'
 import { ItemsContext } from '@/hooks/CartContect'
 import { Item } from '@/utils/IGoods'
 import type { ItemsContextType } from '@/hooks/CartContect'
-import { Metadata } from 'next'
+import Head from 'next/head'
 
-export const metadata: Metadata = {
-    title: "Vadimovich Store: Главная страница",
-    description: "Магазин одежды Вадимович"
-}
 
 
 export default function MyApp({ Component, pageProps }: AppProps) {
@@ -28,6 +24,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
     return (
         <ItemsContext.Provider value={[items, setItems] as ItemsContextType}>
+            <Head>
+                <title>Vadimovich Store</title>
+                <meta name='description' content='Магазин одежды Вадимович' />
+            </Head>
             <section className='font'>
                 <Header />
                 <Component {...pageProps} />
