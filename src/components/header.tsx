@@ -41,7 +41,9 @@ export default function Header() {
             <div className="container">
                 <div className="header--body">
                     <div className="header--body--logo">
-                        <Link href={'/'}>
+                        <Link onClick={()=> {
+                            setBurgerState(false)
+                        }} href={'/'}>
                             <img src="/assets/img/site--logo.png" alt="logo" />
                         </Link>
                     </div>

@@ -47,6 +47,7 @@ const Cupon: React.FC<BuyModalProps> = ({ setClose }) => {
     const [items, setItems] = useItemsContext()
     const [{ sum, count }, setSum] = useState<{ sum: number, count: number }>({ sum: 0, count: 0 })
     const [dis, setDis] = useState<number>(0)
+    const [isSearchCupon, setSearchCupon] = useState<boolean>(false)
 
     useEffect(() => {
         setSum(buySum(items))
@@ -57,6 +58,7 @@ const Cupon: React.FC<BuyModalProps> = ({ setClose }) => {
             cuponRes(cupon).then(res => {
                 setDis(res?.discount)
                 sessionStorage.setItem('cupon', cupon)
+                setSearchCupon(true)
             })
 
         }
@@ -82,7 +84,7 @@ const Cupon: React.FC<BuyModalProps> = ({ setClose }) => {
                                         type="text"
                                     />
                                 </button>
-                                <p>{!dis ? t.cart.isError : t.cart.isTrue}</p>
+                                <p>{isSearchCupon ? (!dis ? t.cart.isError : t.cart.isTrue) : ''}</p>
                                 <button type='reset' className="x">X</button>
                             </form>
                         </div>

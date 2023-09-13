@@ -392,7 +392,12 @@ input {
 @media(max-width: 550px) {
 
     .data--regist--title>h1 {
-        font-size: 15px;
+        font-size: 13px;
+    }
+
+    .data--regist--title:last-child h2 {
+        font-size: 13px;
+        margin-bottom: 10px;
     }
 
     .data--regist--title--inputs .form-inner {

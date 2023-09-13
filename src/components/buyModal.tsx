@@ -237,6 +237,7 @@ const BuyModal: React.FC<BuyModalProps> = ({ isOpen, setClose }) => {
                                     {...register("city", { required: "Заполните форму" })}
                                     id='city'
                                     name='city'
+                                    type='text'
                                     placeholder={t.model.city}
 
                                 />
@@ -258,7 +259,7 @@ const BuyModal: React.FC<BuyModalProps> = ({ isOpen, setClose }) => {
                                 </p>
                             </label>
                         </div>
-                        <button type='submit' onClick={nextModel} id="next">Продолжить</button>
+                        <button type='button' onClick={nextModel} id="next">Продолжить</button>
                     </div>
                 </div>
                 <div className={`data--regist--title ${step == 3 ? 'activ' : ''}`}>
@@ -324,7 +325,6 @@ const BuyModal: React.FC<BuyModalProps> = ({ isOpen, setClose }) => {
                     <h2>Заказ в обработке мы с вами скоро свяжемся</h2>
                     <div className="data--regist--title--inputs">
                         <button type='reset' onClick={() => {
-
                             setClose(prev => !prev)
                         }} id="next">Завершить</button>
                     </div>
