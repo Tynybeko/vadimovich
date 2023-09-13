@@ -46,49 +46,53 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
 
     if (isSingle) {
         return (
-            <Swiper
-                modules={[Navigation, Autoplay, Pagination, Scrollbar, A11y]}
-                spaceBetween={20}
-                slidesPerView={3}
-                navigation
-                loop={true}
-                autoplay={{
-                    delay: 2000,
-                    disableOnInteraction: true
+            <div className="gallery--cards">
 
-                }}
-                breakpoints={{
-                    0: {
-                        slidesPerView: 1,
-                        width: 300,
-                    },
-                    375: {
-                        slidesPerView: 1,
-                        width: null,
+                <Swiper
+                    modules={[Navigation, Autoplay, Pagination, Scrollbar, A11y]}
+                    spaceBetween={20}
+                    slidesPerView={3}
+                    navigation
+                    speed={100}
+                    loop={true}
+                    autoplay={{
+                        delay: 2000,
+                        disableOnInteraction: true
 
-                    },
-                    780: {
+                    }}
+                    breakpoints={{
+                        0: {
+                            slidesPerView: 1,
+                            width: 300,
+                        },
+                        375: {
+                            slidesPerView: 1,
+                            width: null,
 
-                        slidesPerView: 2,
+                        },
+                        780: {
 
-                    },
-                    1075: {
-                        slidesPerView: 3,
+                            slidesPerView: 2,
+
+                        },
+                        1075: {
+                            slidesPerView: 3,
+
+                        }
+                    }}
+                    speed={3000}
+                    scrollbar={{ draggable: true }}
+                >
+                    {
+                        items.filter((item: Item) => item.id != +myID).sort((a: any, b: any) => 0.5 - Math.random()).map((item: Item) =>
+                        (
+
+                            <SwiperSlide>  <Link className="gallery--cards--fon" style={{ backgroundImage: `url(${item.photo})` }} href={`/catalog/${item.id}`}></Link></SwiperSlide>
+                        ))
 
                     }
-                }}
-                speed={3000}
-                scrollbar={{ draggable: true }}
-            >
-                {
-                    items.filter((item: Item) => item.id != +myID).sort((a: any, b: any) => 0.5 - Math.random()).map((item: Item) =>
-                    (
-
-                        <SwiperSlide>  <Link className="gallery--cards--fon" style={{ backgroundImage: `url(${item.photo})` }} href={`/catalog/${item.id}`}></Link></SwiperSlide>
-                    ))
-
-                }
-            </Swiper>
+                </Swiper>
+            </div>
         )
     }
 
