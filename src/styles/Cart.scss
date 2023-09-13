@@ -466,6 +466,8 @@
                             font-weight: 400;
                             line-height: normal;
                             cursor: pointer;
+                            margin-bottom: 5px;
+                            position: relative;
 
 
                         }
@@ -479,7 +481,7 @@
                                 content: '';
                                 position: absolute;
                                 background-color: #f20509;
-                                width: 50%;
+                                width: 100%;
                                 height: 4px;
                                 bottom: -10px;
                                 transition: .2s ease-in-out;
