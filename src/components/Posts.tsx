@@ -80,7 +80,6 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
 
                         }
                     }}
-                    speed={3000}
                     scrollbar={{ draggable: true }}
                 >
                     {
