@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, ChangeEvent } from 'react'
 import '../styles/BuyModal.scss'
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/router";
@@ -11,6 +11,7 @@ import lang from '@/utils/language';
 import { useItemsContext } from '@/hooks/CartContect';
 import { Item, buySize } from '@/utils/IGoods';
 import { ITEM_API } from '@/utils/axios';
+import useDebounce from '@/hooks/useDebouns';
 
 type FormData = z.infer<typeof userSchema>;
 
@@ -45,6 +46,7 @@ const BuyModal: React.FC<BuyModalProps> = ({ isOpen, setClose }) => {
         register,
         getValues,
         watch,
+        setValue,
         formState: { errors, isSubmitting, isDirty, isValid },
     } = useForm<FormData>({
         resolver: zodResolver(userSchema),
@@ -71,6 +73,7 @@ const BuyModal: React.FC<BuyModalProps> = ({ isOpen, setClose }) => {
     const selectDel = watch('delivery');
     const selectPay = watch('payment');
 
+
     const onSubmit = (data: any) => {
         const myItems: any[] = []
         items.forEach((elem: Item) => {
@@ -90,9 +93,9 @@ const BuyModal: React.FC<BuyModalProps> = ({ isOpen, setClose }) => {
 
     }
 
+
     const nextModel = () => {
-        console.log(errors);
-        
+
         if (step == 1 && (getValues(['order_name', 'number', 'whatsapp_num', 'email']).every(item => Boolean(item) == true))) {
             for (let [key, { message }] of Object.entries(errors)) {
                 if (key != 'country' && key != 'city' && key != 'payment' && key != "shipping_address" && Boolean(message)) {
@@ -109,7 +112,6 @@ const BuyModal: React.FC<BuyModalProps> = ({ isOpen, setClose }) => {
             setStep(prev => 3)
         }
     }
-
     return (
         <div className={`data ${isOpen ? 'block' : ''}`}>
             <form onSubmit={handleSubmit(onSubmit)} className='data--regist'>
@@ -133,6 +135,9 @@ const BuyModal: React.FC<BuyModalProps> = ({ isOpen, setClose }) => {
                                     type="text"
                                     name='order_name'
                                     placeholder={t.model.name}
+                                    onChange={(e) => {
+                                        setValue('order_name', e.target.value, { shouldValidate: true })
+                                    }}
                                 />
                                 <p className="text-red-600 text-sm">
                                     {errors?.order_name?.message ? t.valid[order_name ? "format" : "required"] : 'V '}
@@ -146,6 +151,9 @@ const BuyModal: React.FC<BuyModalProps> = ({ isOpen, setClose }) => {
                                     name='email'
                                     id='email'
                                     placeholder="E-Mail"
+                                    onChange={(e) => {
+                                        setValue('email', e.target.value, { shouldValidate: true })
+                                    }}
                                 />
                                 <p className="text-red-600 text-sm">
                                     {errors?.email?.message ? t.valid[email ? "format" : "required"] : 'V '}
@@ -158,6 +166,9 @@ const BuyModal: React.FC<BuyModalProps> = ({ isOpen, setClose }) => {
                                     name='whatsapp_num'
                                     type='tel'
                                     placeholder="WhatsApp"
+                                    onChange={(e) => {
+                                        setValue('whatsapp_num', e.target.value, { shouldValidate: true })
+                                    }}
 
                                 />
                                 <p className="text-red-600 text-sm">
@@ -171,6 +182,9 @@ const BuyModal: React.FC<BuyModalProps> = ({ isOpen, setClose }) => {
                                     type='tel'
                                     name='number'
                                     placeholder="Телефон"
+                                    onChange={(e) => {
+                                        setValue('number', e.target.value, { shouldValidate: true })
+                                    }}
                                 />
                                 <p className="text-red-600 text-sm">
                                     {errors?.number?.message ? t.valid[number ? 'format' : "required"] : 'V '}
@@ -229,6 +243,9 @@ const BuyModal: React.FC<BuyModalProps> = ({ isOpen, setClose }) => {
                                     name='country'
                                     id='country'
                                     placeholder={t.model.country}
+                                    onChange={(e) => {
+                                        setValue('country', e.target.value, { shouldValidate: true })
+                                    }}
                                 />
                                 <p className="text-red-600 text-sm">
                                     {errors?.country?.message ? t.valid[country ? "format" : "required"] : 'V '}
@@ -241,6 +258,9 @@ const BuyModal: React.FC<BuyModalProps> = ({ isOpen, setClose }) => {
                                     name='city'
                                     type='text'
                                     placeholder={t.model.city}
+                                    onChange={(e) => {
+                                        setValue('city', e.target.value, { shouldValidate: true })
+                                    }}
 
                                 />
                                 <p className="text-red-600 text-sm">
@@ -255,13 +275,16 @@ const BuyModal: React.FC<BuyModalProps> = ({ isOpen, setClose }) => {
                                     type="text"
                                     name='shipping_address'
                                     placeholder={t.model.adress}
+                                    onChange={(e) => {
+                                        setValue('shipping_address', e.target.value, { shouldValidate: true })
+                                    }}
                                 />
                                 <p className="text-red-600 text-sm">
                                     {errors?.shipping_address?.message ? t.valid[shipping_address ? 'format' : "required"] : 'V '}
                                 </p>
                             </label>
                         </div>
-                        <button type='button' onClick={nextModel} id="next">Продолжить</button>
+                        <button type='submit' onClick={nextModel} id="next">Продолжить</button>
                     </div>
                 </div>
                 <div className={`data--regist--title ${step == 3 ? 'activ' : ''}`}>
