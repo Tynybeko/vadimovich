@@ -97,14 +97,14 @@ const BuyModal: React.FC<BuyModalProps> = ({ isOpen, setClose }) => {
                     return
                 }
             }
-            setStep(prev => prev + 1)
+            setStep(prev => 2)
         } else if (step == 2 && (getValues(['country', 'city', 'shipping_address']).every(item => Boolean(item) == true))) {
             for (let [key, { message }] of Object.entries(errors)) {
-                if (key != 'payment' && Boolean(message)) {
+                if (key != 'payment' && key != 'order_name' && Boolean(message)) {
                     return
                 }
             }
-            setStep(prev => prev + 1)
+            setStep(prev => 3)
         }
     }
 

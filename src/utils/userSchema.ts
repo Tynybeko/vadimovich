@@ -28,15 +28,13 @@ export const userSchema = z.object({
         if (!value) {
             return false
         }
-        const regex = /^[^0-9\/W\g]*$/;
-        return regex.test(`${value}`)
+        return true
     }, 'format'),
     city: z.custom<string>((value) => {
         if (!value) {
             return false
         }
-        const regex = /^[^0-9\/W\g]*$/;
-        return regex.test(`${value}`)
+        return true
     }, 'format'),
     shipping_address: z.string().refine(value => value, 'format'),
     delivery: z.enum(['Самовызов', 'Фиксированая стоимость доставки по странам СНГ', 'Фиксированая стоимость доставки']),
