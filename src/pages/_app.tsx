@@ -1,4 +1,3 @@
-'use client'
 import type { AppProps } from 'next/app'
 import '@/app/style.scss'
 import Header from '@/components/header'
@@ -7,6 +6,13 @@ import { useState, useEffect } from 'react'
 import { ItemsContext } from '@/hooks/CartContect'
 import { Item } from '@/utils/IGoods'
 import type { ItemsContextType } from '@/hooks/CartContect'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+    title: "Vadimovich Store: Главная страница",
+    description: "Магазин одежды Вадимович"
+}
+
 
 export default function MyApp({ Component, pageProps }: AppProps) {
     const [items, setItems] = useState<Item[]>([])
