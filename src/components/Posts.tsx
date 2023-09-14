@@ -17,7 +17,8 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
     const [items, setItems] = useState<Item[]>([])
     const category = query?.category
     const search = new URLSearchParams(query as Record<string, string>).toString()
-    const [isLoading, setLoading] = useState<boolean>(false)
+    const [isLoading, setLoading] = useState<boolean>(true)
+    const [isError, setErr] = useState<boolean>(false)
 
     let myID = 0
     if (query?.id) {
@@ -39,9 +40,33 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
             .then(res => {
                 setItems([...(res?.results ?? [])])
                 setPage(res?.count)
-                setLoading(true)
+                setLoading(false)
+            }).catch(e => {
+                setErr(true)
             })
     }, [search])
+
+    if (isError) {
+        return (
+            <div className="gallery--cards">
+                <h1 className='ZERO'>Ошибка...</h1>
+            </div>
+        )
+    }
+    if (isLoading) {
+        <div className="center">
+            <div className="wave"></div>
+            <div className="wave"></div>
+            <div className="wave"></div>
+            <div className="wave"></div>
+            <div className="wave"></div>
+            <div className="wave"></div>
+            <div className="wave"></div>
+            <div className="wave"></div>
+            <div className="wave"></div>
+            <div className="wave"></div>
+        </div>
+    }
 
 
     if (isSingle) {
@@ -97,22 +122,19 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
     return (
         <div className="gallery--cards">
             {
-                !isLoading ?
-                    <div className='loading'></div>
-                    :
-                    !items.length ? (<h1 className='ZERO'>Уже скоро!</h1>) :
-                        items.map((item: Item) =>
-                            category ?
-                                (item?.category == category ?
-                                    (
-                                        <Link className="gallery--cards--fon" style={{ backgroundImage: `url(${item.photo})` }} href={`/catalog/${item.id}`}>
-                                        </Link>
-                                    )
-                                    : '')
-                                : (
-                                    <Link className="gallery--cards--fon" style={{ backgroundImage: `url(${item.photo})` }} href={`/catalog/${item.id}`}></Link>
+                !items.length ? (<h1 className='ZERO'>Уже скоро!</h1>) :
+                    items.map((item: Item) =>
+                        category ?
+                            (item?.category == category ?
+                                (
+                                    <Link className="gallery--cards--fon" style={{ backgroundImage: `url(${item.photo})` }} href={`/catalog/${item.id}`}>
+                                    </Link>
                                 )
-                        )
+                                : '')
+                            : (
+                                <Link className="gallery--cards--fon" style={{ backgroundImage: `url(${item.photo})` }} href={`/catalog/${item.id}`}></Link>
+                            )
+                    )
             }
         </div>
     )
