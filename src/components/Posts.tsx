@@ -19,6 +19,7 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
     const search = new URLSearchParams(query as Record<string, string>).toString()
     const [isLoading, setLoading] = useState<boolean>(true)
     const [isError, setErr] = useState<boolean>(false)
+    const [isEmpty, setEmpty] = useState<boolean>(false)
 
     let myID = 0
     if (query?.id) {
@@ -41,6 +42,9 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
                 setItems([...(res?.results ?? [])])
                 setPage(res?.count)
                 setLoading(false)
+                if (!res?.results.length) {
+                    setEmpty(true)
+                }
             }).catch(e => {
                 setErr(true)
             })
@@ -122,7 +126,7 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
     return (
         <div className="gallery--cards">
             {
-                !items.length ? (<h1 className='ZERO'>Уже скоро!</h1>) :
+                isEmpty ? (<h1 className='ZERO'>Уже скоро!</h1>) :
                     items.map((item: Item) =>
                         category ?
                             (item?.category == category ?
