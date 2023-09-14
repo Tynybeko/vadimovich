@@ -47,13 +47,12 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
     if (isSingle) {
         return (
             <div className="gallery--cards">
-
                 <Swiper
                     modules={[Navigation, Autoplay, Pagination, Scrollbar, A11y]}
                     spaceBetween={20}
                     slidesPerView={3}
                     navigation
-                    speed={100}
+                    speed={1000}
                     loop={true}
                     autoplay={{
                         delay: 2000,
