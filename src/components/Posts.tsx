@@ -28,6 +28,7 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
 
 
     useEffect(() => {
+        setEmpty(false)
         if (isSingle) {
             getCategories().then(res => {
                 const myData = []
@@ -48,7 +49,8 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
             }).catch(e => {
                 setErr(true)
             })
-    }, [search])
+    }, [search, query])
+
 
     if (isError) {
         return (
@@ -59,7 +61,6 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
     }
     if (isLoading) {
         return (
-
             <div className="gallery--cards">
                 <h1 className='ZERO'>Загрузка...</h1>
                 <div className="center">
