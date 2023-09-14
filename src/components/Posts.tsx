@@ -58,18 +58,25 @@ export default function Posts({ setPage, isSingle }: { setPage: React.Dispatch<S
         )
     }
     if (isLoading) {
-        <div className="center">
-            <div className="wave"></div>
-            <div className="wave"></div>
-            <div className="wave"></div>
-            <div className="wave"></div>
-            <div className="wave"></div>
-            <div className="wave"></div>
-            <div className="wave"></div>
-            <div className="wave"></div>
-            <div className="wave"></div>
-            <div className="wave"></div>
-        </div>
+        return (
+
+            <div className="gallery--cards">
+                <h1 className='ZERO'>Загрузка...</h1>
+                <div className="center">
+                    <div className="wave"></div>
+                    <div className="wave"></div>
+                    <div className="wave"></div>
+                    <div className="wave"></div>
+                    <div className="wave"></div>
+                    <div className="wave"></div>
+                    <div className="wave"></div>
+                    <div className="wave"></div>
+                    <div className="wave"></div>
+                    <div className="wave"></div>
+                </div>
+            </div>
+        )
+
     }
 
 
