@@ -1,5 +1,4 @@
 'use client'
-
 import React, { SetStateAction, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { getItems } from './goods';
