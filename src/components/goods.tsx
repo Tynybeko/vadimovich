@@ -33,7 +33,7 @@ export default function Goods() {
     const [pageRout, setPage] = useState<any>('1')
     const [categories, setCategories] = useState<any[]>([])
     const [{ isCheckCat, selectedCat }, setCat] = useState({ isCheckCat: false, selectedCat: selectCategory(categories ?? [], query?.category ?? '') ?? '' })
-    const { category, page, ...someQuery } = query
+    const { category_id, page, ...someQuery } = query
     const [pageCount, setPageCount] = useState<number>(1)
     const count = Math.ceil(pageCount / 6)
     const [sort, setSort] = useState<string>('')
@@ -42,9 +42,11 @@ export default function Goods() {
         if (query) {
             getCategories().then(res => {
                 setCategories(prev => [...(res?.results ?? [])])
-                if (category) {
-                    setCat(prev => ({ isCheckCat: false, selectedCat: selectCategory(res?.results, category) }))
-                    setPageCount(res?.results.find((item: any) => item.id == category).items.length)
+                if (category_id) {
+                    setCat(prev => ({ isCheckCat: false, selectedCat: selectCategory(res?.results, category_id) }))
+                    setPageCount(res?.results.find((item: any) => item.id == category_id).items.length)
+                } else {
+                    setCat(prev => ({ isCheckCat: false, selectedCat: '' }))
                 }
                 if (query.page) {
                     setPage(query.page as string)

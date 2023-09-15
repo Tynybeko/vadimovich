@@ -16,7 +16,7 @@ export interface nav {
 
 
 export default function Header() {
-    const { asPath, pathname, locale } = useRouter()
+    const { asPath, pathname, locale, query } = useRouter()
     const t = locale == 'ru' ? lang.ru : lang.kg
     const [categories, setCategories] = useState<nav[]>([])
 
@@ -34,6 +34,8 @@ export default function Header() {
 
     const [isBurger, setBurgerState] = useState<boolean>(false)
 
+    console.log(asPath);
+    console.log(pathname);
 
 
     return (
@@ -53,7 +55,7 @@ export default function Header() {
                         <nav className="header--body--burger--navigat">
                             {
                                 categories.map(({ title, href }, index) => (
-                                    <Link key={index} className={(pathname == href) ? 'activ' : ''} href={href}>{title}</Link>
+                                    <Link key={index} className={!asPath.includes(`category_id`) && href == '/' ? 'activ' : (asPath == href && asPath != '/') ? 'activ' : ''} href={href}>{title}</Link>
                                 ))
                             }
                         </nav>

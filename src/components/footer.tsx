@@ -46,7 +46,7 @@ export default function footer() {
                         <nav className="footer--body--top--navigate">
                             {
                                 categories.map(({ title, href }, index) => (
-                                    <Link key={index} className={pathname == href ? 'activ' : ''} href={href}>{title}</Link>
+                                    <Link key={index} className={!asPath.includes(`category_id`) && href == '/' ? 'activ' : (asPath == href && asPath != '/') ? 'activ' : ''} href={href}>{title}</Link>
                                 ))
                             }
                         </nav>

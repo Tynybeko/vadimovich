@@ -10,12 +10,10 @@ import type { nav } from './header'
 
 
 export default function BurgerMenu({ isBurger, navs, setBurger }: { isBurger: boolean, navs: nav[], setBurger: React.Dispatch<SetStateAction<boolean>> }) {
-    const { pathname, asPath, locale } = useRouter()
-    const t = locale == 'ru' ? lang.ru : lang.kg
+    const { pathname, asPath, locale, query } = useRouter()
     const handleClose = () => {
         setBurger(prev => !prev)
     }
-
 
 
     return (
@@ -23,7 +21,7 @@ export default function BurgerMenu({ isBurger, navs, setBurger }: { isBurger: bo
             <nav>
                 {
                     navs.map(({ title, href }, index) => (
-                        <Link key={index} onClick={handleClose} className={(pathname == href) ? 'activ' : ''} href={href}>{title}</Link>
+                        <Link key={index} onClick={handleClose} className={!asPath.includes(`category_id`) && href == '/' ? 'activ' : (asPath == href && asPath != '/') ? 'activ' : ''} href={href}>{title}</Link>
                     ))
                 }
             </nav>

@@ -12,9 +12,6 @@
     background: url(/assets/img/header--red--fon.webp) center / cover;
     align-items: center;
     padding: 25px 30px;
-    // -webkit-box-shadow: 0px 22px 28px -16px rgba(34, 60, 80, 0.34) inset;
-    // -moz-box-shadow: 0px 22px 28px -16px rgba(34, 60, 80, 0.34) inset;
-    // box-shadow: 0px 22px 28px -16px rgba(34, 60, 80, 0.34) inset;
     justify-content: space-around;
 
 
@@ -27,16 +24,7 @@
         justify-content: space-around;
         gap: 10px;
 
-        &::before {
-            content: "";
-            position: absolute;
-            background: url(/assets/img/header--fon.webp) center / cover;
-            width: 100%;
-            top: 0;
-            height: 100%;
-            z-index: 0;
-        }
-
+       
         a {
             color: #f7f7f7;
             font-family: 'TroubleSide';
