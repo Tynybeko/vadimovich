@@ -6,12 +6,14 @@
         {
             "src": "/site--full--logo.png",
             "sizes": "any",
-            "type": "image/png"
+            "type": "image/png",
+            "background_color": "#ffffff"
         },
         {
             "src": "/site--full--logo.png",
             "sizes": "any",
-            "type": "image/png"
+            "type": "image/png",
+            "background_color": "#ffffff"
         }
     ],
     "theme_color": "#ffffff",
